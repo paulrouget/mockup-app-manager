@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+
+<meta charset="utf8">
+<title></title>
+
+<style>
+  * { margin: 0; }
+
+  body {
+    font-family: Lucida Grande, Helvetica, Helvetica Neue, sans-serif;
+    font-size: 12px;
+  }
+  .oneapp {
+    border-top: 1px dotted grey;
+    margin-top: 15px;
+    padding-top: 15px;
+  }
+  .oneapp > * {
+    display: inline-block;
+    vertical-align: top;
+  }
+  .main > h2 {
+    color: grey;
+    font-weight: normal;
+    font-size: 10px;
+  }
+  .error {
+    background: red;
+    color: white;
+    border: none;
+  }
+</style>
+
+
+<h1>Local Apps:</h1>
+
+<div class="oneapp">
+  <img width="64" src="icon1.png">
+  <div class="main">
+    <h1>my app 1</h1>
+    <h2>/home/paul/github/my-app-1</h2>
+  </div>
+  <div class="meta">
+    <p><a href="#">Edit manifest</a></p>
+    <p><small>Running</small></p>
+    <p><button>stop</button><button>restart</button><button>push</button><button>debug</button></p>
+  </div>
+</div>
+
+<div class="oneapp">
+  <img width="64" src="icon2.png">
+  <div class="main">
+    <h1>my app 2</h1>
+    <h2>/home/paul/github/my-app-2</h2>
+  </div>
+  <div class="meta">
+    <p><a href="#">Edit manifest</a></p>
+    <p><small>installed</small></p>
+    <p><button>start</button><button>uninstall</button><button>push</button><button>debug</button></p>
+  </div>
+</div>
+
+<div class="oneapp">
+  <img width="64" src="icon3.png">
+  <div class="main">
+    <h1>my app 3</h1>
+    <h2>/home/paul/github/my-app-3</h2>
+  </div>
+  <div class="meta">
+    <p><a href="#">Edit manifest</a></p>
+    <p><small>Running</small></p>
+    <p><button class="error">Errors found. Click to fix</button></p>
+  </div>
+</div>
+
+<button style="margin-top:20px">Add New Project</button>

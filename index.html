@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Firefox UI Template</title>
+    <link href="styles.css" type="text/css" rel="stylesheet" />
+  </head>
+  <body spellcheck="false">
+
+    <div class="windowContainer">
+      <div class="mainWindow">
+
+        <div class="titleBar">
+          <div class="windowControls">
+            <div class="widget widgetClose"></div>
+            <div class="widget widgetMinimize"></div>
+            <div class="widget widgetZoom"></div>
+          </div>
+          <div class="titleBarSpacer"></div>
+          <div class="widget widgetFullscreen"></div>
+        </div>
+
+
+        <div class="tabBar">
+          <div class="tab appTab home">
+            <div class="favicon"></div>
+          </div>
+          <div class="tabSeparator"></div>
+          <div class="tab appTab twitter">
+            <div class="favicon"></div>
+          </div>
+          <div class="tabSeparator"></div>
+          <div class="tab startPage">
+            <div class="favicon"></div>
+            <div class="label">Firefox Start Page</div>
+            <div class="close"></div>
+          </div>
+          <div class="tabSeparatorHidden"></div>
+          <div class="tab mozillaWebmaker active">
+            <div class="favicon"></div>
+            <div class="label">Mozilla — Webmaker</div>
+            <div class="close"></div>
+          </div>
+          <div class="tabSeparatorHidden"></div>
+          <div class="tab newTab">
+            <div class="favicon"></div>
+          </div>
+        </div>
+
+
+        <div class="navBar">
+          <div class="toolbarButton backButton"></div>
+          <div class="locationBar">
+            <div class="urlText"><span class="domainName">devtools:</span>app-manager</div>
+            <div class="stopGoReload"></div>
+          </div>
+          <div class="toolbarButton downloadButton"><div class="iconContainer"></div></div>
+          <div class="toolbarButton firefoxButton"><div class="iconContainer"></div></div>
+        </div>
+
+        <!--<iframe src="http://paulrouget.com" class="contentFrame"></iframe>-->
+        <div class="contentFrame" style="background: #FFF">
+          <iframe src="content.html"></iframe>
+        </div>
+
+
+        <div id="device-inspector">
+          <div class="meta meta1">
+            <svg x="0px" y="0px" width="50px" height="50px" viewBox="0 0 90 90" class="icon">
+            <path d="M41.6,1H6.4C2.865,1,0,3.865,0,7.4v76.033c0,3.535,2.865,6.4,6.4,6.4h35.2c3.535,0,6.4-2.865,6.4-6.4V7.4  C48,3.865,45.135,1,41.6,1z M24,86.999c-2.302,0-4.167-1.865-4.167-4.166c0-2.302,1.865-4.167,4.167-4.167  c2.3,0,4.166,1.865,4.166,4.167C28.166,85.134,26.301,86.999,24,86.999z M44,73.433c0,1.323-1.077,2.4-2.4,2.4H6.4  c-1.323,0-2.4-1.077-2.4-2.4V7.4C4,6.077,5.077,5,6.4,5h35.2C42.923,5,44,6.077,44,7.4V73.433z"></path>
+            </svg>
+            <p>connected to: <strong>Unagi</strong><br>
+            <a href="#">disconnect</a></p>
+          </div>
+          <div class="separator"></div>
+          <div class="meta meta2">
+            <p>
+            20 Apps. 6 running.<br>
+            46 permissions listed. 8 Activities available.<br>
+            <strong>Firefox OS 1.2</strong>.<br>
+            </p>
+          </div>
+          <div class="separator"></div>
+          <div class="meta meta3">
+            <svg x="0px" y="0px" width="18px" height="18px" viewBox="-10 -10 120 120" class="icon">
+            <path d="M81.953,11.719c-1.25-0.99-2.734-2.083-4.453-3.281c-1.771-1.198-3.594-2.24-5.469-3.125 c-1.822-0.885-4.193-1.797-7.109-2.734l-1.797-0.547C59.062,0.677,54.688,0,50,0s-9.635,0.833-14.844,2.5 c-5.208,1.719-9.922,4.115-14.141,7.188S13.125,16.406,10,20.625C6.823,24.896,4.375,29.688,2.656,35C0.885,40.312,0,45.312,0,50 s0.885,9.688,2.656,15c1.719,5.312,3.802,9.635,6.25,12.969l0.703,0.859c1.979,2.709,3.776,4.869,5.391,6.484 c1.562,1.562,3.594,3.256,6.094,5.078c2.552,1.822,4.792,3.203,6.719,4.141c1.927,0.99,4.427,1.979,7.5,2.969l1.562,0.469 C40.938,99.322,45.312,100,50,100s9.635-0.834,14.844-2.5c5.209-1.719,9.4-3.75,12.578-6.094l2.031-1.484 c1.822-1.303,3.307-2.447,4.453-3.438c1.094-0.99,2.135-2.057,3.125-3.203c0.99-1.197,2.162-2.734,3.516-4.609l1.25-1.719 c2.188-3.021,4.088-7.213,5.703-12.578C99.166,58.959,100,54.166,100,50c0-4.167-0.521-8.177-1.562-12.031l-0.078-0.156 c-1.041-3.698-2.109-6.719-3.203-9.062c-1.146-2.292-2.656-4.74-4.531-7.344l-0.391-0.547c-1.666-2.292-3.15-4.141-4.453-5.547 C84.479,13.958,83.203,12.76,81.953,11.719 M30.469,37.5h39.062L51.562,73.281h-3.125L30.469,37.5"></path>
+            </svg>
+            <a href="#" onclick="openDeviceInspector()">click for more info about <strong>Unagi</strong></a>
+            <div class="close"></div>
+          </div>
+          <pre class="logs">opening tcp socket (address: xxxx, port: xxxx)
+initializing connection...  timeout(30s)
+opening tcp socket (address: xxxx, port: xxxx)
+initializing connection...  success
+connected
+            </pre>
+          </div>
+          <div id="device-inspector-details">
+            <iframe src="inspector.html"></iframe>
+          </div>
+       </div>
+    </div>
+    <script type="application/javascript;version=1.8" src="script.js"></script>
+  </body>
+</html>
