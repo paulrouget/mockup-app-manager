@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+
+<meta charset="utf8">
+<title></title>
+
+<link rel="stylesheet" href="style.css">
+
+<body status="connected" class="expanded">
+
+  <div id="device-inspector">
+    <div id="banners-and-logs">
+      <!-- Connected -->
+      <div id="banner-connected" class="banner">
+        <div id="status" class="banner-box">
+          <div class="banner-content">
+            <p>connected to: <strong>Unagi</strong></p>
+            <p><a href="#" onclick="setStatus('disconnected')">disconnect</a></p>
+          </div>
+        </div>
+        <div id="summary" class="banner-box">
+          <div class="banner-content">
+            <p>20 Apps. 6 running.</p>
+            <p>46 permissions listed. 8 Activities available.</p>
+            <p><strong>Firefox OS 1.2</strong>.</p>
+          </div>
+        </div>
+        <div id="expand" class="banner-box">
+          <div class="banner-content">
+            <p><a href="#" onclick="toggleDeviceInspector()">click for more info about <strong>Unagi</strong></a></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Disconnected -->
+      <div id="banner-disconnected" class="banner">
+        <div class="banner-box">
+          <div class="banner-content">
+            <p>Can't find device on <em>localhost:9000</em> (<a href="#">change</a>).</p>
+            <p>
+            <button onclick="setStatus('connecting')">rescan</button>
+            <button>start simulator</button>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Disconnected -->
+      <div id="banner-connecting" class="banner">
+        <div id="status" class="banner-box">
+          <div class="banner-content">
+            <p>connecting...</p>
+            <p>
+            <button onclick="setStatus('disconnected')">cancel</button>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div id="logs">
+        <pre>opening tcp socket (address: xxxx, port: xxxx)
+initializing connection...  timeout(30s)
+opening tcp socket (address: xxxx, port: xxxx)
+initializing connection...  success
+connected</pre>
+      </div>
+
+    </div>
+
+    <div id="collapsable-content">
+      <div id="content">
+        <div class="meta">
+          <details>
+            <p><button>screenshot</button>  <button>kill all apps</button>  <button>reboot</button></p>
+            <p>Kernel: 3.1.0; Radio: XXX.</p>
+            <p>memory usage: 800Mb (total: 2Gb)</p>
+            <p>IMEI: XXXXXXXXXXXXXXXXXXX</p>
+            <p>phone number: 555-555-555</p>
+          </details>
+          <h1>Firefox OS 1.2; Gecko 26;</h1>
+
+          <h2>screen size: 320x480 (192dpi). <br> battery: 80%. Charging.</h2>
+        </div>
+
+        <div id="tabs">
+
+          <div id="tabs-headers">
+            <h2><a href="#tab-permissions">Permissions</a></h2>
+            <h2><a href="#tab-apps">Installed Apps</a></h2>
+            <h2><a href="#tab-activities">Activities</a></h2>
+          </div>
+
+          <div id="tab-permissions" class="tab">
+            <p class="help"><span>Allowed: </span><span value="o"></span><span>Forbidden: </span><span value="x"></span><span>Prompt: </span><span value="prompt"></span></p>
+            <table  cellspacing="0" >
+              <tbody>
+                <tr><td></td><td>default</td><td>priviledged</td><td>certified</td></tr>
+              </tbody>
+              <tbody>
+                <tr><td class="name"><a href="https://developer.mozilla.org/en-US/docs/Web/API/window.navigator.geolocation">geolocation</a></td><td class="val1" value="prompt"></td><td class="val2" value="prompt"></td><td class="val2" value="prompt"></td></tr>
+                <tr><td class="name">camera</td><td class="val1" value="x"></td><td class="val2" value="x"></td><td class="val2" value="o"></td></tr>
+                <tr><td class="name">alarms</td><td class="val1" value="o"></td><td class="val2" value="o"></td><td class="val2" value="o"></td></tr>
+                <tr><td class="name">tcp-socket</td><td class="val1" value="x"></td><td class="val2" value="o"></td><td class="val2" value="o"></td></tr>
+                <tr><td class="name">network-events</td><td class="val1" value="x"></td><td class="val2" value="x"></td><td class="val2" value="o"></td></tr>
+                <tr><td class="name">contacts</td><td class="val1" value="x"></td><td class="val2" value="prompt"></td><td class="val2" value="o"></td></tr>
+                <tr><td class="name">device-storage:apps</td><td class="val1" value="x"></td><td class="val2" value="x"></td><td class="val2" value="o"></td></tr>
+                <tr><td class="name">device-storage:pictures</td><td class="val1" value="x"></td><td class="val2" value="prompt"></td><td class="val2" value="o"></td></tr>
+                <tr><td class="name">device-storage:videos</td><td class="val1" value="x"></td><td class="val2" value="prompt"></td><td class="val2" value="o"></td></tr>
+                <tr><td class="name">device-storage:music</td><td class="val1" value="x"></td><td class="val2" value="prompt"></td><td class="val2" value="o"></td></tr>
+                <tr><td class="name">device-storage:sdcard</td><td class="val1" value="x"></td><td class="val2" value="prompt"></td><td class="val2" value="o"></td></tr>
+                <tr><td class="name">sms</td><td class="val1" value="x"></td><td class="val2" value="x"></td><td class="val2" value="o"></td></tr>
+                <tr><td class="name">telephony</td><td class="val1" value="x"></td><td class="val2" value="x"></td><td class="val2" value="o"></td></tr>
+                <tr><td class="name">browser</td><td class="val1" value="x"></td><td class="val2" value="o"></td><td class="val2" value="o"></td></tr>
+                <tr><td class="name">bluetooth</td><td class="val1" value="x"></td><td class="val2" value="x"></td><td class="val2" value="o"></td></tr>
+                <tr><td class="name">mobileconnection</td><td class="val1" value="x"></td><td class="val2" value="x"></td><td class="val2" value="o"></td></tr>
+                <tr><td class="name">mobilenetwork</td><td class="val1" value="x"></td><td class="val2" value="o"></td><td class="val2" value="o"></td></tr>
+                <tr><td class="name">power</td><td class="val1" value="x"></td><td class="val2" value="x"></td><td class="val2" value="o"></td></tr>
+                <tr><td class="name">push</td><td class="val1" value="o"></td><td class="val2" value="o"></td><td class="val2" value="o"></td></tr>
+                <tr><td class="name">settings</td><td class="val1" value="x"></td><td class="val2" value="x"></td><td class="val2" value="o"></td></tr>
+                <tr><td class="name">permissions</td><td class="val1" value="x"></td><td class="val2" value="x"></td><td class="val2" value="o"></td></tr>
+                <tr><td class="name">fmradio</td><td class="val1" value="x"></td><td class="val2" value="o"></td><td class="val2" value="o"></td></tr>
+                <tr><td class="name">attention</td><td class="val1" value="x"></td><td class="val2" value="x"></td><td class="val2" value="o"></td></tr>
+                <tr><td class="name">webapps-manage</td><td class="val1" value="x"></td><td class="val2" value="x"></td><td class="val2" value="o"></td></tr>
+                <tr><td class="name">backgroundservice</td><td class="val1" value="x"></td><td class="val2" value="x"></td><td class="val2" value="o"></td></tr>
+                <tr><td class="name">desktop-notification</td><td class="val1" value="o"></td><td class="val2" value="o"></td><td class="val2" value="o"></td></tr>
+                <tr><td class="name">networkstats-manage</td><td class="val1" value="x"></td><td class="val2" value="x"></td><td class="val2" value="o"></td></tr>
+                <tr><td class="name">wifi-manage</td><td class="val1" value="x"></td><td class="val2" value="x"></td><td class="val2" value="o"></td></tr>
+                <tr><td class="name">systemXHR</td><td class="val1" value="x"></td><td class="val2" value="o"></td><td class="val2" value="o"></td></tr>
+                <tr><td class="name">voicemail</td><td class="val1" value="x"></td><td class="val2" value="x"></td><td class="val2" value="o"></td></tr>
+                <tr><td class="name">deprecated-hwvideo</td><td class="val1" value="x"></td><td class="val2" value="x"></td><td class="val2" value="o"></td></tr>
+                <tr><td class="name">idle</td><td class="val1" value="x"></td><td class="val2" value="x"></td><td class="val2" value="o"></td></tr>
+                <tr><td class="name">time</td><td class="val1" value="x"></td><td class="val2" value="x"></td><td class="val2" value="o"></td></tr>
+                <tr><td class="name">embed-apps</td><td class="val1" value="x"></td><td class="val2" value="x"></td><td class="val2" value="o"></td></tr>
+                <tr><td class="name">storage</td><td class="val1" value="o"></td><td class="val2" value="o"></td><td class="val2" value="o"></td></tr>
+                <tr><td class="name">background-sensors</td><td class="val1" value="x"></td><td class="val2" value="x"></td><td class="val2" value="o"></td></tr>
+                <tr><td class="name">cellbroadcast</td><td class="val1" value="x"></td><td class="val2" value="x"></td><td class="val2" value="o"></td></tr>
+                <tr><td class="name">audio-channel-normal</td><td class="val1" value="o"></td><td class="val2" value="o"></td><td class="val2" value="o"></td></tr>
+                <tr><td class="name">audio-channel-content</td><td class="val1" value="o"></td><td class="val2" value="o"></td><td class="val2" value="o"></td></tr>
+                <tr><td class="name">audio-channel-notification</td><td class="val1" value="x"></td><td class="val2" value="o"></td><td class="val2" value="o"></td></tr>
+                <tr><td class="name">audio-channel-alarm</td><td class="val1" value="x"></td><td class="val2" value="o"></td><td class="val2" value="o"></td></tr>
+                <tr><td class="name">audio-channel-telephony</td><td class="val1" value="x"></td><td class="val2" value="x"></td><td class="val2" value="o"></td></tr>
+                <tr><td class="name">audio-channel-ringer</td><td class="val1" value="x"></td><td class="val2" value="x"></td><td class="val2" value="o"></td></tr>
+                <tr><td class="name">audio-channel-publicnotification</td><td class="val1" value="x"></td><td class="val2" value="x"></td><td class="val2" value="o"></td></tr>
+                <tr><td class="name">open-remote-window</td><td class="val1" value="x"></td><td class="val2" value="x"></td><td class="val2" value="o"></td></tr>
+                <tr><td class="name">keyboard</td><td class="val1" value="x"></td><td class="val2" value="x"></td><td class="val2" value="o"></td></tr>
+            </tbody></table>
+          </div>
+
+          <div id="tab-apps" class="tab">
+            apps
+          </div>
+
+
+          <div id="tab-activities" class="tab">
+            activities
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</body>
+
+
+<script src="script.js"></script>

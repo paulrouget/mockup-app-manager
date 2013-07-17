@@ -1,0 +1,207 @@
+body, tbody {
+  color: #333;
+  font-family: Lucida Grande, Helvetica, Helvetica Neue, sans-serif;
+  line-height: 14px;
+  font-size: 12px;
+  margin: 0;
+  background-color: white;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  -moz-box-sizing: border-box;
+}
+
+a {
+  color: #000!important;
+  text-decoration: none;
+  border-bottom: 1px dotted #999
+}
+
+button {
+  background: #EEE;
+  border: 1px solid #999;
+  cursor: pointer;
+}
+
+hr {
+  border: none;
+  border-bottom: 1px dotted #EEE;
+  margin: 20px 0;
+}
+
+#device-inspector {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 100%;
+}
+
+#banners-and-logs {
+  display: flex;
+  min-height: 100px;
+  border: solid #CCC;
+  border-width: 1px 0;
+}
+
+#logs {
+  display: flex;
+  width: 40%;
+}
+
+.banner {
+  display: none;
+  width: 60%;
+}
+
+body[status="connected"] #banner-connected {
+  display: flex;
+}
+
+body[status="disconnected"] #banner-disconnected {
+  display: flex;
+}
+
+body[status="connecting"] #banner-connecting {
+  display: flex;
+}
+
+#logs > pre {
+  overflow: auto;
+  width: 100%;
+  border: 1px solid #DDD;
+  border-radius: 3px;
+  font-size: 10px;
+  background: white;
+  padding: 5px;
+  margin: 10px 20px;
+}
+
+.banner-box {
+  background-image: linear-gradient(to bottom, transparent, #AAA, transparent);
+  background-position: center right;
+  background-size: 1px 80%;
+  background-repeat: no-repeat;
+  padding: 10px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+#banner-connected > .banner-box {
+  width: calc(100%/3);
+  align-items: center;
+}
+
+/**                     CONTENT                    **/
+
+#collapsable-content {
+  height: 600px;
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 200ms ease;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+body.expanded #collapsable-content {
+  max-height: 100%;
+}
+
+#content {
+  padding: 20px;
+  background: white;
+  max-width: 800px;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  
+}
+
+#content h1 {
+  margin: 20px 0;
+}
+
+#content h2 {
+  font-size: 18px;
+  line-height: 20px;
+  color: #666;
+  margin: 10px 0;
+}
+
+#content details {
+  color: #666;
+}
+
+#tabs {
+  display: flex;
+  flex-direction: column;
+}
+
+#tabs-headers {
+  flex-grow: 1;
+}
+
+#tabs-headers > h2 {
+  display: inline;
+  border: 1px solid #CCC;
+  padding: 0 10px;
+}
+
+.tab {
+  display: none;
+  overflow: auto;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.tab:target {
+  display: flex;
+}
+
+#tab-permissions {
+  padding: 5px;
+}
+
+#tab-permissions tr {
+  height: 40px;
+}
+
+#tab-permissions tr:nth-of-type(even) {
+  background: #EEE;
+}
+
+
+#tab-permissions td {
+  min-width: 10px;
+  padding: 10px;
+}
+
+#tab-permissions td:not(.name) {
+  text-align: center;
+  min-width: 100px;
+}
+
+#tab-permissions td:not(.name):before {
+  content: "";
+  display: block;
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  line-height: 14px;
+  margin-left: calc(50% - 7px);
+}
+
+#tab-permissions .help span:before {
+  content: "";
+  display: inline-block;
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  line-height: 14px;
+}
+
+#tab-permissions      [value="x"]:before {background: rgb(255,0,0)}
+#tab-permissions      [value="o"]:before {background: rgb(0,255,0)}
+#tab-permissions [value="prompt"]:before {background: rgb(155,200,255)}
