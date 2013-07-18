@@ -3,9 +3,10 @@
 <meta charset="utf8">
 <title></title>
 
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="layout.css">
+<link rel="stylesheet" href="pixels.css">
 
-<body status="connected" class="expanded">
+<body status="connected">
 
   <div id="device-inspector">
     <div id="banners-and-logs">
@@ -81,13 +82,13 @@ connected</pre>
           <h2>screen size: 320x480 (192dpi). <br> battery: 80%. Charging.</h2>
         </div>
 
-        <div id="tabs">
+        <div id="tabs-headers">
+          <h2><a href="#tab-permissions">Permissions</a></h2>
+          <h2><a href="#tab-apps">Installed Apps</a></h2>
+          <h2><a href="#tab-activities">Activities</a></h2>
+        </div>
 
-          <div id="tabs-headers">
-            <h2><a href="#tab-permissions">Permissions</a></h2>
-            <h2><a href="#tab-apps">Installed Apps</a></h2>
-            <h2><a href="#tab-activities">Activities</a></h2>
-          </div>
+        <div id="tabs">
 
           <div id="tab-permissions" class="tab">
             <p class="help"><span>Allowed: </span><span value="o"></span><span>Forbidden: </span><span value="x"></span><span>Prompt: </span><span value="prompt"></span></p>
@@ -148,7 +149,6 @@ connected</pre>
           <div id="tab-apps" class="tab">
             apps
           </div>
-
 
           <div id="tab-activities" class="tab">
             activities
