@@ -1,0 +1,138 @@
+* {
+  margin: 0;
+  padding: 0;
+  -moz-box-sizing: border-box;
+}
+
+body {
+  color: #333;
+  background-color: white;
+}
+
+body, tbody {
+  font-family: Lucida Grande, Helvetica, Helvetica Neue, sans-serif;
+  line-height: 14px;
+  font-size: 12px;
+}
+
+a {
+  color: #000!important;
+  text-decoration: none;
+  border-bottom: 1px dotted #999
+}
+
+button {
+  background: #EEE;
+  border: 1px solid #999;
+  cursor: pointer;
+}
+
+hr {
+  border: none;
+  border-bottom: 1px dotted #EEE;
+  margin: 20px 0;
+}
+
+#banners-and-logs {
+  border: solid #CCC;
+  border-width: 1px 0;
+}
+
+#logs > pre {
+  border: 1px solid #DDD;
+  border-radius: 3px;
+  font-size: 10px;
+  background: white;
+  padding: 5px;
+  margin: 10px 20px;
+}
+
+.banner-box {
+  background-image: linear-gradient(to bottom, transparent, #AAA, transparent);
+  background-position: center right;
+  background-size: 1px 80%;
+  background-repeat: no-repeat;
+  padding: 10px 20px;
+}
+
+#collapsable-content {
+  transition: max-height 200ms ease;
+}
+
+#content {
+  padding: 20px;
+  background: white;
+  margin: 20px 0;
+}
+
+#content > details {
+  color: #666;
+}
+
+.meta {
+  margin-bottom: 40px;
+}
+
+.meta > header > *{
+  line-height: 1.2em;
+}
+
+.meta > header > h2 {
+  color: #666;
+}
+
+.tab {
+  cursor: pointer;
+  border-bottom: 4px solid #CCC;
+  color: #666;
+  height: 24px;
+}
+
+.tab.selected {
+  border-color: #F06;
+  color: #000;
+}
+
+#tabs {
+  background: #EEE;
+  padding: 10px 0 0;
+}
+
+.tabpanel.permissions tr {
+  height: 40px;
+}
+
+.tabpanel.permissions tr:nth-of-type(even) {
+  background: #FFF;
+}
+
+.tabpanel.permissions td {
+  min-width: 10px;
+  padding: 10px;
+}
+
+.tabpanel.permissions td:not(.name) {
+  text-align: center;
+  min-width: 100px;
+}
+
+.tabpanel.permissions td:not(.name):before {
+  content: "";
+  display: block;
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  line-height: 14px;
+  margin-left: calc(50% - 7px);
+}
+
+.tabpanel.permissions .help span:before {
+  content: "";
+  display: inline-block;
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  line-height: 14px;
+}
+
+.tabpanel.permissions      [value="x"]:before {background: rgb(255,0,0)}
+.tabpanel.permissions      [value="o"]:before {background: rgb(0,255,0)}
+.tabpanel.permissions [value="prompt"]:before {background: rgb(155,200,255)}

@@ -1,0 +1,102 @@
+html, body {
+  height: 100%;
+}
+
+#device-inspector {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 100%;
+}
+
+#banners-and-logs {
+  display: flex;
+  min-height: 100px;
+}
+
+#collapsable-content {
+  display: flex;
+  max-height: 0;
+  overflow: hidden;
+  justify-content: center;
+}
+
+body.expanded #collapsable-content {
+  max-height: 100%;
+}
+
+#logs {
+  display: flex;
+  width: 40%;
+}
+
+.banner {
+  display: none;
+  width: 60%;
+}
+
+#device-inspector[status="connected"]    #banner-connected,
+#device-inspector[status="connecting"]   #banner-connecting,
+#device-inspector[status="disconnected"] #banner-disconnected,
+#device-inspector[status="editing"]      #banner-editing {
+  display: flex;
+}
+
+
+#logs > pre {
+  overflow: auto;
+  width: 100%;
+}
+
+.banner-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+#banner-connected > .banner-box {
+  width: calc(100%/3);
+  align-items: center;
+}
+
+#content {
+  display: flex;
+  flex-direction: column;
+  height: 500px;
+}
+
+.meta {
+  flex-shrink: 0;
+  display: flex;
+}
+
+.meta > details {
+  flex-grow: 1;
+  text-align: right;
+}
+
+#tabs-headers {
+  flex-shrink: 0;
+  display: flex;
+}
+
+#tabs {
+  overflow: auto;
+  flex-shrink: 1;
+}
+
+.tab {
+  display: block;
+  width: calc(100%/3);
+  text-align: center;
+}
+
+.tabpanel {
+  height: 0;
+  overflow: hidden;
+}
+
+.tabpanel.selected {
+  height: auto;
+}
