@@ -136,3 +136,7 @@ hr {
 .tabpanel.permissions      [value="x"]:before {background: rgb(255,0,0)}
 .tabpanel.permissions      [value="o"]:before {background: rgb(0,255,0)}
 .tabpanel.permissions [value="prompt"]:before {background: rgb(155,200,255)}
+
+.app {
+  border-top: 1px solid #CCC;
+}

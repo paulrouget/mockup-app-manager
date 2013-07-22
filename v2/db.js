@@ -15,14 +15,14 @@ let DB = {
     return obj;
   },
 
-  _getParentAndKey: function(path, root) {
-    path.replace("[", ".[", "g");
+  _getParentAndKey: function(path) {
+    path = path.replace("[", ".[", "g");
     let chunks = path.split(".");
     chunks = chunks.map((c) => {
       if (c[0] != "[") return c;
       return parseInt(c.substr(1));
     });
-    let parent = root;
+    let parent = this._db;
     for (let i = 0; i < chunks.length; i++) {
       let key = chunks[i];
       if (i == (chunks.length - 1)) {
@@ -37,19 +37,16 @@ let DB = {
     }
   },
 
-  setValue: function(path, value, root) {
-    if (!root) root = this._db;
-    let {parent, key} = this._getParentAndKey(path, root);
+  set: function(path, value) {
+    let {parent, key} = this._getParentAndKey(path);
     parent[key] = this._copyObject(value);
     this.emit("changed", path);
   },
 
-  getValue: function(path, root) {
-    if (!root) root = this._db;
-    let {parent, key} = this._getParentAndKey(path, root);
+  get: function(path) {
+    let {parent, key} = this._getParentAndKey(path);
     return this._copyObject(parent[key]);
   }
 };
 
 EventEmitter.decorate(DB);
-DB.setValue("client.apps.all", webapps.all);

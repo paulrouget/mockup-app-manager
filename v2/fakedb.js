@@ -19,9 +19,6 @@ let fakeDB = { client: {
     port: 6000
   },
   apps: {
-    installed: {
-      count: 12,
-    },
     running: {
       count: 13,
     },
@@ -1573,3 +1570,35 @@ let webapps = {
         }
     ]
 };
+
+fakeDB.client.apps.all = webapps.all;
+
+let l10n = {
+  _properties: {
+    "connectedToDevice":"Connected to %1$",
+    "appsSummary":"%1$ applications installed. %2$ applications running. %3$ permissions and %4$ activities listed.",
+    "connectTo":"Connect to %1$:%2$",
+    "deviceSize":"Device size: %1$x%2$ (%3$ DPI)",
+    "batteryStatus":"Battery: %1$%",
+    "IMEINumber":"IMEI: %1$",
+    "phoneNumber":"Phone number: %1$",
+  },
+  get: function(prop, params = []) {
+    let str = this._properties[prop];
+    if (!str) {
+      throw new Error("Can't find string " + prop);
+    }
+    if (params.length > 0)
+      str = str.replace("%1$", params[0]);
+    if (params.length > 1)
+      str = str.replace("%2$", params[1]);
+    if (params.length > 2)
+      str = str.replace("%3$", params[2]);
+    if (params.length > 3)
+      str = str.replace("%4$", params[3]);
+    if (params.length > 4)
+      str = str.replace("%1$", params[0]);
+    return str;
+  },
+}
+

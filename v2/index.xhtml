@@ -28,21 +28,21 @@
 
   <body>
 
-    <div id="device-inspector" template="{'type':'attribute','path':'client.connection.status','name':'status'}">
+    <div id="device-inspector" template='{"type":"attribute","path":"client.connection.status","name":"status"}'>
       <div id="banners-and-logs">
 
         <!-- Connected -->
         <div id="banner-connected" class="banner">
           <div id="status" class="banner-box">
             <div class="banner-content">
-              <p template="{'type':'localizedContent','property':'connectedToDevice','paths':['client.meta.deviceName']}"></p>
+              <p template='{"type":"localizedContent","property":"connectedToDevice","paths":["client.meta.deviceName"]}'></p>
               <p><a href="#" onclick="UI.disconnect()">&disconnect;</a></p>
             </div>
           </div>
           <div id="summary" class="banner-box">
             <div class="banner-content">
-              <p><span template="{'type':'localizedContent','property':'appsSummary','paths':['client.apps.installed.count','client.apps.running.count','client.apps.permissions.count','client.apps.activities.count']}"></span></p>
-              <p><strong template="{'type':'textContent','path':'client.meta.OSNameAndVersion'}"></strong></p>
+              <p><span template='{"type":"localizedContent","property":"appsSummary","paths":["client.apps.all.length","client.apps.running.count","client.apps.permissions.count","client.apps.activities.count"]}'></span></p>
+              <p><strong template='{"type":"textContent","path":"client.meta.OSNameAndVersion"}'></strong></p>
             </div>
           </div>
           <div id="expand" class="banner-box">
@@ -57,7 +57,7 @@
           <div class="banner-box">
             <div class="banner-content">
               <p>&notConnected;</p>
-              <p><button onclick="UI.connect()" template="{'type':'localizedContent','property':'connectTo','paths':['client.connection.ip','client.connection.port']}"></button>
+              <p><button onclick="UI.connect()" template='{"type":"localizedContent","property":"connectTo","paths":["client.connection.ip","client.connection.port"]}'></button>
               <a href="#" onclick="UI.editConnectionParameters()">&changeIPAndPort;</a></p>
               <p><button>&startSimulator;</button></p>
             </div>
@@ -68,8 +68,8 @@
         <div id="banner-editing" class="banner">
           <div class="banner-box">
             <div class="banner-content">
-              <p><input class="ip"   template="{'type':'attribute','path':'client.connection.ip','name':'value'}"></input>
-                 <input class="port" template="{'type':'attribute','path':'client.connection.port','name':'value'}" type="number"></input></p>
+              <p><input class="ip"   template='{"type":"attribute","path":"client.connection.ip","name":"value"}'></input>
+                 <input class="port" template='{"type":"attribute","path":"client.connection.port","name":"value"}' type="number"></input></p>
               <p><button onclick="UI.saveConnectionInfo()">&saveConnectionInfo;</button></p>
             </div>
           </div>
@@ -101,18 +101,18 @@ connected</pre>
         <div id="content">
           <div class="meta">
             <header>
-              <h1 template="{'type':'textContent','path':'client.meta.OSNameAndVersion'}"></h1>
-              <h1 template="{'type':'textContent','path':'client.meta.platformVersion'}"></h1>
+              <h1 template='{"type":"textContent","path":"client.meta.OSNameAndVersion"}'></h1>
+              <h1 template='{"type":"textContent","path":"client.meta.platformVersion"}'></h1>
             </header>
             <details>
               <p><button>&screenshot;</button>  <button>&killall;</button>  <button>&reboot;</button></p>
-              <p template="{'type':'localizedContent','property':'deviceSize', 'paths':['client.meta.deviceWidth','client.meta.deviceHeight','client.meta.deviceDPI']}"></p>
-              <p template="{'type':'localizedContent','property':'batteryStatus', 'paths':['client.battery.level'],'attributeName':'status','attributeValue':'client.battery.status'}">
+              <p template='{"type":"localizedContent","property":"deviceSize", "paths":["client.meta.deviceWidth","client.meta.deviceHeight","client.meta.deviceDPI"]}'></p>
+              <p template='{"type":"localizedContent","property":"batteryStatus", "paths":["client.battery.level"],"attributeName":"status","attributeValue":"client.battery.status"}'>
                 <span class="charging">&charging;</span>
                 <span class="discharging">&discharging;</span>
               </p>
-              <p template="{'type':'localizedContent','property':'IMEINumber', 'paths':['client.meta.IMEINumber']}"></p>
-              <p template="{'type':'localizedContent','property':'phoneNumber', 'paths':['client.meta.phoneNumber']}"></p>
+              <p template='{"type":"localizedContent","property":"IMEINumber", "paths":["client.meta.IMEINumber"]}'></p>
+              <p template='{"type":"localizedContent","property":"phoneNumber", "paths":["client.meta.phoneNumber"]}'></p>
             </details>
           </div>
 
@@ -180,7 +180,7 @@ connected</pre>
               </tbody></table>
             </div>
 
-            <div class="tabpanel apps" template="{'type':'loop','path':'client.apps.all','childSelector':'#app-template'}">
+            <div class="tabpanel apps" template-loop='{"arrayPath":"client.apps.all","childSelector":"#app-template"}'>
             </div>
 
             <div class="tabpanel activities">
@@ -198,12 +198,12 @@ connected</pre>
   <![CDATA[
   <div class="app">
     <div class="app-summary">
-      <p class="app-name" template="{'type':'textContent','path':'name','relative':'true'}"></p>
-      <p class="app-type" template="{'type':'textContent','path':'type','relative':'true'}"></p>
+      <p class="app-name" template='{"type":"textContent","path":"name"}'></p>
+      <p class="app-type" template='{"type":"textContent","path":"type"}'></p>
     </div>
     <div class="app-details">
-      <p class="app-description" template="{'type':'textContent','path':'manifest.description','relative':'true'}"></p>
-      <p class="app-origin" template="{'type':'textContent','path':'origin','relative':'true'}"></p>
+      <p class="app-description" template='{"type":"textContent","path":"manifest.description"}'></p>
+      <p class="app-origin" template='{"type":"textContent","path":"origin"}'></p>
     </div>
   </div>
   ]]>

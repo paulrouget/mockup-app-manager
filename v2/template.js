@@ -1,39 +1,79 @@
 let Template = {
   init: function(document, db, l10n) {
     this._db = db;
-    db.on("change", (event,path) => this._dbChanged);
+    db.on("changed", (event,path) => {this._dbChanged(event,path)});
     this._doc = document;
     this._l10n = l10n;
+    this._nodeListeners = new Map();
+    this._loopListeners = new Map();
     this._processTree(this._doc.body);
   },
 
-  _dbChanged: function(event,path) {
+  _dbChanged: function(event, path) {
+    // Loops:
+    let set = this._loopListeners.get(path);
+    if (set) {
+      for (let [registeredPath, set] of this._nodeListeners) {
+        if (registeredPath.indexOf(path) > -1) {
+          this._nodeListeners.delete(registeredPath);
+        }
+      }
+      for (let elt of set) {
+        this._processLoop(elt);
+      }
+    }
+
+    // Nodes:
+    set = this._nodeListeners.get(path);
+    if (set) {
+      for (let elt of set) {
+        this._processNode(elt, null, path);
+      }
+    }
   },
 
-  _processNode: function(e, rootPath="") {
+  _registerNode: function(path, element) {
+    if (!this._nodeListeners.has(path)) {
+      this._nodeListeners.set(path, new Set());
+    }
+    let set = this._nodeListeners.get(path);
+    set.add(element);
+  },
+
+  _registerLoop: function(path, element) {
+    if (!this._loopListeners.has(path)) {
+      this._loopListeners.set(path, new Set());
+    }
+    let set = this._loopListeners.get(path);
+    set.add(element);
+  },
+
+  _processNode: function(e, rootPath="", cachedPath=null) {
     let str = e.getAttribute("template");
+    if (rootPath) rootPath = rootPath + ".";
     try {
       let json = JSON.parse(str);
       // Sanity check
       if (!("type" in json)) {
         throw new Error("missing property");
       }
+      let paths = [];
       switch (json.type) {
         case "attribute": {
           if (!("name" in json) ||
               !("path" in json)) {
             throw new Error("missing property");
           }
-          if (rootPath) json.path = rootPath + "." + json.path;
-          e.setAttribute(json.name, this._db.get(json.path));
+          e.setAttribute(json.name, this._db.get(cachedPath || (rootPath + json.path)));
+          paths.push(rootPath + json.path);
           break;
         }
         case "textContent": {
           if (!("path" in json)) {
             throw new Error("missing property");
           }
-          if (rootPath) json.path = rootPath + "." + json.path;
-          e.textContent = this._db.get(json.path);
+          e.textContent = this._db.get(cachedPath || (rootPath + json.path));
+          paths.push(rootPath + json.path);
           break;
         }
         case "localizedContent": {
@@ -42,27 +82,29 @@ let Template = {
             throw new Error("missing property");
           }
           let params = json.paths.map((p) => {
-            if (rootPath) p = rootPath + p;
-            this._db.get(p)
+            paths.push(rootPath + p);
+            return this._db.get(cachedPath || (rootPath + p))
           });
           e.textContent = this._l10n.get(json.property, params);
           break;
         }
       }
+      if (paths.length > 0) {
+        for (let path of paths) {
+          this._registerNode(path, e);
+        }
+      }
     } catch(exception) {
       console.error("Invalid template: " + e.outerHTML + " (" + exception + ")");
-      break;
     }
   },
 
   _processLoop: function(e, rootPath="") {
-    let str = e.getAttribute("template-loop");
-    let template, count;
     try {
+      let template, count;
+      let str = e.getAttribute("template-loop");
       let json = JSON.parse(str);
-      // Sanity check
-      if (!("selector" in json) ||
-          !("arrayPath" in json)     ||
+      if (!("arrayPath" in json)     ||
           !("childSelector" in json)) {
         throw new Error("missing property");
       }
@@ -75,31 +117,35 @@ let Template = {
       }
       template = this._doc.createElement("div");
       template.innerHTML = templateParent.textContent;
+      template = template.firstElementChild;
       let array = this._db.get(json.arrayPath);
-      if (Array.isArray(array)) {
-        throw new Errot("referenced array is not an array");
+      if (!Array.isArray(array)) {
+        throw new Error("referenced array is not an array");
       }
       count = array.length;
+
+      let fragment = this._doc.createDocumentFragment();
+      for (let i = 0; i < count; i++) {
+        let node = template.cloneNode(true);
+        this._processTree(node, json.arrayPath + "[" + i + "]");
+        fragment.appendChild(node);
+      }
+      this._registerLoop(json.arrayPath, e);
+      e.innerHTML = "";
+      e.appendChild(fragment);
     } catch(exception) {
       console.error("Invalid template: " + e.outerHTML + " (" + exception + ")");
-      break;
     }
-    let fragment = this._doc.createDocumentFragment();
-    for (let i = 0; i < count; i++) {
-      let node = template.firstChild.cloneNode(true);
-      this._processTree(node, json.arrayPath + "[" + i + "]");
-    }
-    e.appendChild(fragment);
   },
 
   _processTree: function(parent, rootPath="") {
     let loops = parent.querySelectorAll("[template-loop]");
     let nodes = parent.querySelectorAll("[template]");
     for (let e of loops) {
-      this._processLoop(e);
+      this._processLoop(e, rootPath);
     }
     for (let e of nodes) {
-      this._processNode(e);
+      this._processNode(e, rootPath);
     }
   },
 }
@@ -193,35 +239,6 @@ function update(e, listen = false) {
     else
       e.removeAttribute(attrObj.attributeName);
   }
-}
-
-let l10n = {
-  _properties: {
-    "connectedToDevice":"Connected to %1$",
-    "appsSummary":"%1$ applications installed. %2$ applications running. %3$ permissions and %4$ activities listed.",
-    "connectTo":"Connect to %1$:%2$",
-    "deviceSize":"Device size: %1$x%2$ (%3$ DPI)",
-    "batteryStatus":"Battery: %1$%",
-    "IMEINumber":"IMEI: %1$",
-    "phoneNumber":"Phone number: %1$",
-  },
-  get: function(prop, params = []) {
-    let str = this._properties[prop];
-    if (!str) {
-      throw new Error("Can't find string " + prop);
-    }
-    if (params.length > 0)
-      str = str.replace("%1$", params[0]);
-    if (params.length > 1)
-      str = str.replace("%2$", params[1]);
-    if (params.length > 2)
-      str = str.replace("%3$", params[2]);
-    if (params.length > 3)
-      str = str.replace("%4$", params[3]);
-    if (params.length > 4)
-      str = str.replace("%1$", params[0]);
-    return str;
-  },
 }
 
 let loops = document.querySelectorAll("*[data-template-loop]");

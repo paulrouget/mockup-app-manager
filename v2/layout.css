@@ -23,6 +23,7 @@ template {
   max-height: 0;
   overflow: hidden;
   justify-content: center;
+  flex-grow: 1;
 }
 
 body.expanded #collapsable-content {
@@ -67,7 +68,6 @@ body.expanded #collapsable-content {
 #content {
   display: flex;
   flex-direction: column;
-  height: 500px;
 }
 
 .meta {
@@ -88,6 +88,7 @@ body.expanded #collapsable-content {
 #tabs {
   overflow: auto;
   flex-shrink: 1;
+  flex-grow: 1;
 }
 
 .tab {

@@ -2,6 +2,7 @@ let _timeout = null;
 
 let UI = {
   init: function() {
+    Template.init(document, DB, l10n);
   },
 
   setTab: function(name) {
@@ -24,32 +25,31 @@ let UI = {
 
   disconnect: function() {
     clearTimeout(_timeout);
-    DB.setValue("client.connection.status", "disconnected");
+    DB.set("client.connection.status", "disconnected");
   },
 
   connect: function() {
-    DB.setValue("client.connection.status", "connecting");
+    DB.set("client.connection.status", "connecting");
     _timeout = setTimeout(() => {
-      DB.setValue("client.connection.status", "connected");
+      DB.set("client.connection.status", "connected");
     }, 1500);
   },
 
   editConnectionParameters: function() {
     this.disconnect();
-    DB.setValue("client.connection.status", "editing");
+    DB.set("client.connection.status", "editing");
   },
 
   saveConnectionInfo: function() {
     let ip = document.querySelector("input.ip").value;
     let port = Math.abs(document.querySelector("input.port").value);
     if (!!port) {
-      DB.setValue("client.connection.port", port);
+      DB.set("client.connection.port", port);
     }
-    DB.setValue("client.connection.ip", ip);
+    DB.set("client.connection.ip", ip);
     this.disconnect();
   },
 }
 
 UI.init();
 UI.setTab("permissions");
-
