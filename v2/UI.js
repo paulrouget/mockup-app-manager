@@ -2,6 +2,8 @@ let _timeout = null;
 
 let UI = {
   init: function() {
+    UI.setTab("permissions");
+    DB.set("client", fakedb.client);
     Template.init(document, DB, l10n);
   },
 
@@ -52,4 +54,3 @@ let UI = {
 }
 
 UI.init();
-UI.setTab("permissions");

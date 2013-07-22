@@ -1,7 +1,7 @@
 let Template = {
   init: function(document, db, l10n) {
     this._db = db;
-    db.on("changed", (event,path) => {this._dbChanged(event,path)});
+    db.on("changed", (event,path) => this._dbChanged(event,path));
     this._doc = document;
     this._l10n = l10n;
     this._nodeListeners = new Map();
@@ -27,7 +27,7 @@ let Template = {
     set = this._nodeListeners.get(path);
     if (set) {
       for (let elt of set) {
-        this._processNode(elt, null, path);
+        this._processNode(elt);
       }
     }
   },
@@ -48,15 +48,18 @@ let Template = {
     set.add(element);
   },
 
-  _processNode: function(e, rootPath="", cachedPath=null) {
+  _processNode: function(e, rootPath="") {
     let str = e.getAttribute("template");
-    if (rootPath) rootPath = rootPath + ".";
+    if (rootPath)
+      rootPath = rootPath + ".";
     try {
       let json = JSON.parse(str);
       // Sanity check
       if (!("type" in json)) {
         throw new Error("missing property");
       }
+      if (json.rootPath)
+        rootPath = json.rootPath;
       let paths = [];
       switch (json.type) {
         case "attribute": {
@@ -64,7 +67,7 @@ let Template = {
               !("path" in json)) {
             throw new Error("missing property");
           }
-          e.setAttribute(json.name, this._db.get(cachedPath || (rootPath + json.path)));
+          e.setAttribute(json.name, this._db.get(rootPath + json.path));
           paths.push(rootPath + json.path);
           break;
         }
@@ -72,7 +75,7 @@ let Template = {
           if (!("path" in json)) {
             throw new Error("missing property");
           }
-          e.textContent = this._db.get(cachedPath || (rootPath + json.path));
+          e.textContent = this._db.get(rootPath + json.path);
           paths.push(rootPath + json.path);
           break;
         }
@@ -83,12 +86,15 @@ let Template = {
           }
           let params = json.paths.map((p) => {
             paths.push(rootPath + p);
-            return this._db.get(cachedPath || (rootPath + p))
+            return this._db.get(rootPath + p);
           });
           e.textContent = this._l10n.get(json.property, params);
           break;
         }
       }
+      if (rootPath)
+        json.rootPath = rootPath;
+      e.setAttribute("template", JSON.stringify(json));
       if (paths.length > 0) {
         for (let path of paths) {
           this._registerNode(path, e);
@@ -149,101 +155,3 @@ let Template = {
     }
   },
 }
-
-/* ---------
-
-let gPathToNodes = new Map();
-
-function addListener(e, path) {
-  let chunks = path.split(".");
-  for (let i = 0; i < chunks.length; i++) {
-    let subPath = chunks[0];
-    for (let j = 1; j <= i; j++) subPath += "." + chunks[j];
-    let set = gPathToNodes.get(subPath);
-    if (!set) { set = new Set(); gPathToNodes.set(subPath, set); }
-    set.add(e);
-  }
-}
-
-DB.on("changed", function(event, path) {
-  if (gPathToNodes.has(path)) {
-    for (let node of gPathToNodes.get(path)) {
-      update(node);
-    }
-  }
-});
-
-function loop(e, listen = false) {
-  let attr = e.dataset.templateLoop.replace("'", "\"", "g");
-  let attr = JSON.parse(attr);
-  let array = DB.getValue(attr.path);
-  if (!Array.isArray(array)) {
-    throw new Error("Not an array");
-  }
-  let tpl = document.querySelector(attr.templateSelector).textContent;
-  let html = "";
-  for (let o in array) {
-    html += tpl;
-  }
-  e.innerHTML = html;
-}
-
-function update(e, listen = false) {
-  let attr = e.dataset.template.replace("'", "\"", "g");
-  let attrObj = null;
-
-  try {
-   attrObj = JSON.parse(attr);
-  } catch(e) { }
-
-  if (!attrObj) {
-    attrObj = {
-      content: attr,
-    }
-    e.textContent = DB.getValue(attr);
-  }
-
-  if (listen) {
-    if (Array.isArray(attrObj.with)) {
-      for (let param of attrObj.with) {
-        addListener(e, param);
-      }
-    }
-    if (attrObj.content) {
-      addListener(e, attrObj.content);
-    }
-  }
-
-  let root = null;
-  if (attrObj.loop) {
-    let rootElt = document.querySelector(attrObj.loop);
-    root = JSON.parse(rootElt.dataset.templateLoop).path
-    let idx = Array.indexOf(e.parentNode.children, e);
-    attrObj.content += "[" + idx + "]";
-  }
-  if (attrObj.content) {
-    e.textContent = DB.getValue(attrObj.content, root);
-  }
-  if (attrObj.l10nContent) {
-    let params = [];
-    if (Array.isArray(attrObj.with)) {
-      params = params.concat(attrObj.with.map((p) => DB.getValue(p)))
-    }
-    e.textContent = l10n.get(attrObj.l10nContent, params);
-  }
-  if (attrObj.attributeName) {
-    if (listen) addListener(e, attrObj.attributeValue);
-    let value = DB.getValue(attrObj.attributeValue);
-    if (value)
-      e.setAttribute(attrObj.attributeName, value);
-    else
-      e.removeAttribute(attrObj.attributeName);
-  }
-}
-
-let loops = document.querySelectorAll("*[data-template-loop]");
-for (let e of loops) loop(e, true);
-
-let elements = document.querySelectorAll("*[data-template]");
-for (let e of elements) update(e, true);
-*/

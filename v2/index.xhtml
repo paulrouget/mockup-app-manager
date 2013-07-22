@@ -107,7 +107,8 @@ connected</pre>
             <details>
               <p><button>&screenshot;</button>  <button>&killall;</button>  <button>&reboot;</button></p>
               <p template='{"type":"localizedContent","property":"deviceSize", "paths":["client.meta.deviceWidth","client.meta.deviceHeight","client.meta.deviceDPI"]}'></p>
-              <p template='{"type":"localizedContent","property":"batteryStatus", "paths":["client.battery.level"],"attributeName":"status","attributeValue":"client.battery.status"}'>
+              <p id="battery" template='{"type":"attribute","path":"client.battery.status","name":"status"}'>
+                <span template='{"type":"localizedContent","property":"batteryStatus", "paths":["client.battery.level"]}'></span>
                 <span class="charging">&charging;</span>
                 <span class="discharging">&discharging;</span>
               </p>
@@ -124,60 +125,7 @@ connected</pre>
 
           <div id="tabs">
 
-            <div class="tabpanel permissions">
-              <p class="help"><span>Allowed: </span><span value="o"></span><span>Forbidden: </span><span value="x"></span><span>Prompt: </span><span value="prompt"></span></p>
-              <table  cellspacing="0" >
-                <tbody>
-                  <tr><td></td><td>default</td><td>priviledged</td><td>certified</td></tr>
-                </tbody>
-                <tbody>
-                  <tr><td class="name"><a href="https://developer.mozilla.org/en-US/docs/Web/API/window.navigator.geolocation">geolocation</a></td><td class="val1" value="prompt"></td><td class="val2" value="prompt"></td><td class="val2" value="prompt"></td></tr>
-                  <tr><td class="name">camera</td><td class="val1" value="x"></td><td class="val2" value="x"></td><td class="val2" value="o"></td></tr>
-                  <tr><td class="name">alarms</td><td class="val1" value="o"></td><td class="val2" value="o"></td><td class="val2" value="o"></td></tr>
-                  <tr><td class="name">tcp-socket</td><td class="val1" value="x"></td><td class="val2" value="o"></td><td class="val2" value="o"></td></tr>
-                  <tr><td class="name">network-events</td><td class="val1" value="x"></td><td class="val2" value="x"></td><td class="val2" value="o"></td></tr>
-                  <tr><td class="name">contacts</td><td class="val1" value="x"></td><td class="val2" value="prompt"></td><td class="val2" value="o"></td></tr>
-                  <tr><td class="name">device-storage:apps</td><td class="val1" value="x"></td><td class="val2" value="x"></td><td class="val2" value="o"></td></tr>
-                  <tr><td class="name">device-storage:pictures</td><td class="val1" value="x"></td><td class="val2" value="prompt"></td><td class="val2" value="o"></td></tr>
-                  <tr><td class="name">device-storage:videos</td><td class="val1" value="x"></td><td class="val2" value="prompt"></td><td class="val2" value="o"></td></tr>
-                  <tr><td class="name">device-storage:music</td><td class="val1" value="x"></td><td class="val2" value="prompt"></td><td class="val2" value="o"></td></tr>
-                  <tr><td class="name">device-storage:sdcard</td><td class="val1" value="x"></td><td class="val2" value="prompt"></td><td class="val2" value="o"></td></tr>
-                  <tr><td class="name">sms</td><td class="val1" value="x"></td><td class="val2" value="x"></td><td class="val2" value="o"></td></tr>
-                  <tr><td class="name">telephony</td><td class="val1" value="x"></td><td class="val2" value="x"></td><td class="val2" value="o"></td></tr>
-                  <tr><td class="name">browser</td><td class="val1" value="x"></td><td class="val2" value="o"></td><td class="val2" value="o"></td></tr>
-                  <tr><td class="name">bluetooth</td><td class="val1" value="x"></td><td class="val2" value="x"></td><td class="val2" value="o"></td></tr>
-                  <tr><td class="name">mobileconnection</td><td class="val1" value="x"></td><td class="val2" value="x"></td><td class="val2" value="o"></td></tr>
-                  <tr><td class="name">mobilenetwork</td><td class="val1" value="x"></td><td class="val2" value="o"></td><td class="val2" value="o"></td></tr>
-                  <tr><td class="name">power</td><td class="val1" value="x"></td><td class="val2" value="x"></td><td class="val2" value="o"></td></tr>
-                  <tr><td class="name">push</td><td class="val1" value="o"></td><td class="val2" value="o"></td><td class="val2" value="o"></td></tr>
-                  <tr><td class="name">settings</td><td class="val1" value="x"></td><td class="val2" value="x"></td><td class="val2" value="o"></td></tr>
-                  <tr><td class="name">permissions</td><td class="val1" value="x"></td><td class="val2" value="x"></td><td class="val2" value="o"></td></tr>
-                  <tr><td class="name">fmradio</td><td class="val1" value="x"></td><td class="val2" value="o"></td><td class="val2" value="o"></td></tr>
-                  <tr><td class="name">attention</td><td class="val1" value="x"></td><td class="val2" value="x"></td><td class="val2" value="o"></td></tr>
-                  <tr><td class="name">webapps-manage</td><td class="val1" value="x"></td><td class="val2" value="x"></td><td class="val2" value="o"></td></tr>
-                  <tr><td class="name">backgroundservice</td><td class="val1" value="x"></td><td class="val2" value="x"></td><td class="val2" value="o"></td></tr>
-                  <tr><td class="name">desktop-notification</td><td class="val1" value="o"></td><td class="val2" value="o"></td><td class="val2" value="o"></td></tr>
-                  <tr><td class="name">networkstats-manage</td><td class="val1" value="x"></td><td class="val2" value="x"></td><td class="val2" value="o"></td></tr>
-                  <tr><td class="name">wifi-manage</td><td class="val1" value="x"></td><td class="val2" value="x"></td><td class="val2" value="o"></td></tr>
-                  <tr><td class="name">systemXHR</td><td class="val1" value="x"></td><td class="val2" value="o"></td><td class="val2" value="o"></td></tr>
-                  <tr><td class="name">voicemail</td><td class="val1" value="x"></td><td class="val2" value="x"></td><td class="val2" value="o"></td></tr>
-                  <tr><td class="name">deprecated-hwvideo</td><td class="val1" value="x"></td><td class="val2" value="x"></td><td class="val2" value="o"></td></tr>
-                  <tr><td class="name">idle</td><td class="val1" value="x"></td><td class="val2" value="x"></td><td class="val2" value="o"></td></tr>
-                  <tr><td class="name">time</td><td class="val1" value="x"></td><td class="val2" value="x"></td><td class="val2" value="o"></td></tr>
-                  <tr><td class="name">embed-apps</td><td class="val1" value="x"></td><td class="val2" value="x"></td><td class="val2" value="o"></td></tr>
-                  <tr><td class="name">storage</td><td class="val1" value="o"></td><td class="val2" value="o"></td><td class="val2" value="o"></td></tr>
-                  <tr><td class="name">background-sensors</td><td class="val1" value="x"></td><td class="val2" value="x"></td><td class="val2" value="o"></td></tr>
-                  <tr><td class="name">cellbroadcast</td><td class="val1" value="x"></td><td class="val2" value="x"></td><td class="val2" value="o"></td></tr>
-                  <tr><td class="name">audio-channel-normal</td><td class="val1" value="o"></td><td class="val2" value="o"></td><td class="val2" value="o"></td></tr>
-                  <tr><td class="name">audio-channel-content</td><td class="val1" value="o"></td><td class="val2" value="o"></td><td class="val2" value="o"></td></tr>
-                  <tr><td class="name">audio-channel-notification</td><td class="val1" value="x"></td><td class="val2" value="o"></td><td class="val2" value="o"></td></tr>
-                  <tr><td class="name">audio-channel-alarm</td><td class="val1" value="x"></td><td class="val2" value="o"></td><td class="val2" value="o"></td></tr>
-                  <tr><td class="name">audio-channel-telephony</td><td class="val1" value="x"></td><td class="val2" value="x"></td><td class="val2" value="o"></td></tr>
-                  <tr><td class="name">audio-channel-ringer</td><td class="val1" value="x"></td><td class="val2" value="x"></td><td class="val2" value="o"></td></tr>
-                  <tr><td class="name">audio-channel-publicnotification</td><td class="val1" value="x"></td><td class="val2" value="x"></td><td class="val2" value="o"></td></tr>
-                  <tr><td class="name">open-remote-window</td><td class="val1" value="x"></td><td class="val2" value="x"></td><td class="val2" value="o"></td></tr>
-                  <tr><td class="name">keyboard</td><td class="val1" value="x"></td><td class="val2" value="x"></td><td class="val2" value="o"></td></tr>
-              </tbody></table>
+            <div class="tabpanel permissions" template-loop='{"arrayPath":"client.permissions","childSelector":"#permission-template"}'>
             </div>
 
             <div class="tabpanel apps" template-loop='{"arrayPath":"client.apps.all","childSelector":"#app-template"}'>
@@ -193,6 +141,19 @@ connected</pre>
     </div>
   </body>
 
+
+  <template id="permission-template">
+  <![CDATA[
+  <div class="permission">
+      <p>
+        <span template='{"type":"textContent","path":"name"}'></span>
+        <span template='{"type":"textContent","path":"app"}'></span>/
+        <span template='{"type":"textContent","path":"privileged"}'></span>/
+        <span template='{"type":"textContent","path":"certified"}'></span>
+      </p>
+  </div>
+  ]]>
+  </template>
 
   <template id="app-template">
   <![CDATA[

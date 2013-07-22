@@ -105,3 +105,8 @@ body.expanded #collapsable-content {
 .tabpanel.selected {
   height: auto;
 }
+
+#battery[status="discharging"] > .charging,
+#battery[status="charging"] > .discharging {
+  display: none;
+}

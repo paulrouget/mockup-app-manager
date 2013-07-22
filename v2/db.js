@@ -1,6 +1,5 @@
 let DB = {
-  _db: fakeDB,
-
+  _db: {},
   _copyObject: function(obj) {
     if (typeof obj == "object") {
       try {
