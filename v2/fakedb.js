@@ -35,9 +35,9 @@ let fakeDB = { client: {
 }}
 
 let webapps = {
-    "apps": [
+    "all": [
         {
-            "__name": "Settings",
+            "name": "Settings",
             "csp": "",
             "installOrigin": "app://settings.gaiamobile.org",
             "origin": "app://settings.gaiamobile.org",
@@ -57,7 +57,7 @@ let webapps = {
             "storeId": "",
             "storeVersion": 0,
             "redirects": null,
-            "_manifest": {
+            "manifest": {
                 "activities": {
                     "configure": {
                         "disposition": "window",
@@ -66,7 +66,7 @@ let webapps = {
                         }
                     }
                 },
-                "__name": "Settings",
+                "name": "Settings",
                 "default_locale": "en-US",
                 "icons": {
                     "60": "/style/icons/60/Settings.png",
@@ -119,12 +119,12 @@ let webapps = {
                 "type": "certified",
                 "developer": {
                     "url": "https://github.com/mozilla-b2g/gaia",
-                    "__name": "The Gaia Team"
+                    "name": "The Gaia Team"
                 }
             }
         },
         {
-            "__name": "Gallery",
+            "name": "Gallery",
             "csp": "",
             "installOrigin": "app://gallery.gaiamobile.org",
             "origin": "app://gallery.gaiamobile.org",
@@ -144,9 +144,9 @@ let webapps = {
             "storeId": "",
             "storeVersion": 0,
             "redirects": null,
-            "_manifest": {
+            "manifest": {
                 "fullscreen": true,
-                "__name": "Gallery",
+                "name": "Gallery",
                 "default_locale": "en-US",
                 "activities": {
                     "browse": {
@@ -204,12 +204,12 @@ let webapps = {
                 "type": "certified",
                 "developer": {
                     "url": "https://github.com/mozilla-b2g/gaia",
-                    "__name": "The Gaia Team"
+                    "name": "The Gaia Team"
                 }
             }
         },
         {
-            "__name": "Video",
+            "name": "Video",
             "csp": "",
             "installOrigin": "app://video.gaiamobile.org",
             "origin": "app://video.gaiamobile.org",
@@ -229,9 +229,9 @@ let webapps = {
             "storeId": "",
             "storeVersion": 0,
             "redirects": null,
-            "_manifest": {
+            "manifest": {
                 "fullscreen": true,
-                "__name": "Video",
+                "name": "Video",
                 "default_locale": "en-US",
                 "icons": {
                     "60": "/style/icons/60/Video.png",
@@ -301,12 +301,12 @@ let webapps = {
                 "type": "certified",
                 "developer": {
                     "url": "https://github.com/mozilla-b2g/gaia",
-                    "__name": "The Gaia Team"
+                    "name": "The Gaia Team"
                 }
             }
         },
         {
-            "__name": "Send To Bluetooth Device",
+            "name": "Send To Bluetooth Device",
             "csp": "",
             "installOrigin": "app://bluetooth.gaiamobile.org",
             "origin": "app://bluetooth.gaiamobile.org",
@@ -326,7 +326,7 @@ let webapps = {
             "storeId": "",
             "storeVersion": 0,
             "redirects": null,
-            "_manifest": {
+            "manifest": {
                 "activities": {
                     "share": {
                         "href": "/transfer.html",
@@ -334,7 +334,7 @@ let webapps = {
                         "disposition": "inline"
                     }
                 },
-                "__name": "Send To Bluetooth Device",
+                "name": "Send To Bluetooth Device",
                 "icons": {
                     "30": "/style/icons/icon30.png",
                     "60": "/style/icons/icon60.png"
@@ -354,12 +354,12 @@ let webapps = {
                 "type": "certified",
                 "developer": {
                     "url": "https://github.com/mozilla-b2g/gaia",
-                    "__name": "The Gaia Team"
+                    "name": "The Gaia Team"
                 }
             }
         },
         {
-            "__name": "Wallpaper",
+            "name": "Wallpaper",
             "csp": "",
             "installOrigin": "app://wallpaper.gaiamobile.org",
             "origin": "app://wallpaper.gaiamobile.org",
@@ -379,7 +379,7 @@ let webapps = {
             "storeId": "",
             "storeVersion": 0,
             "redirects": null,
-            "_manifest": {
+            "manifest": {
                 "activities": {
                     "share": {
                         "href": "/share.html",
@@ -410,10 +410,10 @@ let webapps = {
                     "64": "/style/icons/64/Wallpaper.png"
                 },
                 "description": "Gaia Wallpaper Picker",
-                "__name": "Wallpaper",
+                "name": "Wallpaper",
                 "developer": {
                     "url": "https://github.com/mozilla-b2g/gaia",
-                    "__name": "The Gaia Team"
+                    "name": "The Gaia Team"
                 },
                 "type": "certified",
                 "permissions": {
@@ -424,7 +424,7 @@ let webapps = {
             }
         },
         {
-            "__name": "Communications",
+            "name": "Communications",
             "csp": "",
             "installOrigin": "app://communications.gaiamobile.org",
             "origin": "app://communications.gaiamobile.org",
@@ -465,7 +465,7 @@ let webapps = {
                     "to": "/redirects/redirect.html"
                 }
             ],
-            "_manifest": {
+            "manifest": {
                 "activities": {
                     "new": {
                         "returnValue": true,
@@ -519,7 +519,7 @@ let webapps = {
                 "entry_points": {
                     "dialer": {
                         "launch_path": "/dialer/index.html#keyboard-view",
-                        "__name": "Phone",
+                        "name": "Phone",
                         "icons": {
                             "60": "/dialer/style/icons/60/Dialer.png",
                             "120": "/dialer/style/icons/Dialer.png"
@@ -528,18 +528,18 @@ let webapps = {
                     "ftu": {
                         "fullscreen": "true",
                         "launch_path": "/ftu/index.html",
-                        "__name": "FTU"
+                        "name": "FTU"
                     },
                     "contacts": {
                         "launch_path": "/contacts/index.html",
-                        "__name": "Contacts",
+                        "name": "Contacts",
                         "icons": {
                             "60": "/contacts/style/icons/60/Contacts.png",
                             "120": "/contacts/style/icons/Contacts.png"
                         }
                     }
                 },
-                "__name": "Communications",
+                "name": "Communications",
                 "orientation": "portrait-primary",
                 "description": "Gaia Communications",
                 "messages": [
@@ -613,12 +613,12 @@ let webapps = {
                 "type": "certified",
                 "developer": {
                     "url": "https://github.com/mozilla-b2g/gaia",
-                    "__name": "The Gaia Team"
+                    "name": "The Gaia Team"
                 }
             }
         },
         {
-            "__name": "Messages",
+            "name": "Messages",
             "csp": "",
             "installOrigin": "app://sms.gaiamobile.org",
             "origin": "app://sms.gaiamobile.org",
@@ -638,7 +638,7 @@ let webapps = {
             "storeId": "",
             "storeVersion": 0,
             "redirects": null,
-            "_manifest": {
+            "manifest": {
                 "activities": {
                     "new": {
                         "disposition": "window",
@@ -663,7 +663,7 @@ let webapps = {
                         }
                     }
                 },
-                "__name": "Messages",
+                "name": "Messages",
                 "default_locale": "en-US",
                 "icons": {
                     "60": "/style/icons/60/Sms.png",
@@ -696,12 +696,12 @@ let webapps = {
                 "type": "certified",
                 "developer": {
                     "url": "https://github.com/mozilla-b2g/gaia",
-                    "__name": "The Gaia Team"
+                    "name": "The Gaia Team"
                 }
             }
         },
         {
-            "__name": "E-Mail",
+            "name": "E-Mail",
             "csp": "",
             "installOrigin": "app://email.gaiamobile.org",
             "origin": "app://email.gaiamobile.org",
@@ -721,7 +721,7 @@ let webapps = {
             "storeId": "",
             "storeVersion": 0,
             "redirects": null,
-            "_manifest": {
+            "manifest": {
                 "activities": {
                     "new": {
                         "disposition": "window",
@@ -746,7 +746,7 @@ let webapps = {
                         }
                     }
                 },
-                "__name": "E-Mail",
+                "name": "E-Mail",
                 "default_locale": "en-US",
                 "icons": {
                     "60": "/style/icons/60/Email.png",
@@ -780,12 +780,12 @@ let webapps = {
                 "type": "certified",
                 "developer": {
                     "url": "https://github.com/mozilla-b2g/gaia",
-                    "__name": "The Gaia Team"
+                    "name": "The Gaia Team"
                 }
             }
         },
         {
-            "__name": "FM Radio",
+            "name": "FM Radio",
             "csp": "",
             "installOrigin": "app://fm.gaiamobile.org",
             "origin": "app://fm.gaiamobile.org",
@@ -805,8 +805,8 @@ let webapps = {
             "storeId": "",
             "storeVersion": 0,
             "redirects": null,
-            "_manifest": {
-                "__name": "FM Radio",
+            "manifest": {
+                "name": "FM Radio",
                 "default_locale": "en-US",
                 "icons": {
                     "60": "/style/icons/60/Fm.png",
@@ -825,12 +825,12 @@ let webapps = {
                 "type": "certified",
                 "developer": {
                     "url": "https://github.com/mozilla-b2g/gaia",
-                    "__name": "The Gaia Team"
+                    "name": "The Gaia Team"
                 }
             }
         },
         {
-            "__name": "PDF Viewer",
+            "name": "PDF Viewer",
             "csp": "",
             "installOrigin": "app://pdfjs.gaiamobile.org",
             "origin": "app://pdfjs.gaiamobile.org",
@@ -850,7 +850,7 @@ let webapps = {
             "storeId": "",
             "storeVersion": 0,
             "redirects": null,
-            "_manifest": {
+            "manifest": {
                 "activities": {
                     "view": {
                         "returnValue": true,
@@ -861,7 +861,7 @@ let webapps = {
                         }
                     }
                 },
-                "__name": "PDF Viewer",
+                "name": "PDF Viewer",
                 "default_locale": "en-US",
                 "icons": {
                     "48": "/icon.png",
@@ -878,12 +878,12 @@ let webapps = {
                 "type": "certified",
                 "developer": {
                     "url": "https://github.com/mozilla/pdf.js",
-                    "__name": "The pdf.js Team"
+                    "name": "The pdf.js Team"
                 }
             }
         },
         {
-            "__name": "Camera",
+            "name": "Camera",
             "csp": "",
             "installOrigin": "app://camera.gaiamobile.org",
             "origin": "app://camera.gaiamobile.org",
@@ -903,7 +903,7 @@ let webapps = {
             "storeId": "",
             "storeVersion": 0,
             "redirects": null,
-            "_manifest": {
+            "manifest": {
                 "fullscreen": true,
                 "orientation": "portrait-primary",
                 "default_locale": "en-US",
@@ -939,7 +939,7 @@ let webapps = {
                 "launch_path": "/index.html",
                 "developer": {
                     "url": "https://github.com/mozilla-b2g/gaia",
-                    "__name": "The Gaia Team"
+                    "name": "The Gaia Team"
                 },
                 "type": "certified",
                 "permissions": {
@@ -957,11 +957,11 @@ let webapps = {
                     "camera": {},
                     "audio-channel-notification": {}
                 },
-                "__name": "Camera"
+                "name": "Camera"
             }
         },
         {
-            "__name": "Calendar",
+            "name": "Calendar",
             "csp": "",
             "installOrigin": "app://calendar.gaiamobile.org",
             "origin": "app://calendar.gaiamobile.org",
@@ -981,8 +981,8 @@ let webapps = {
             "storeId": "",
             "storeVersion": 0,
             "redirects": null,
-            "_manifest": {
-                "__name": "Calendar",
+            "manifest": {
+                "name": "Calendar",
                 "default_locale": "en-US",
                 "icons": {
                     "60": "/style/icons/60/Calendar.png",
@@ -1012,12 +1012,12 @@ let webapps = {
                 "type": "certified",
                 "developer": {
                     "url": "https://github.com/mozilla-b2g/gaia",
-                    "__name": "The Gaia Team"
+                    "name": "The Gaia Team"
                 }
             }
         },
         {
-            "__name": "Music",
+            "name": "Music",
             "csp": "",
             "installOrigin": "app://music.gaiamobile.org",
             "origin": "app://music.gaiamobile.org",
@@ -1037,7 +1037,7 @@ let webapps = {
             "storeId": "",
             "storeVersion": 0,
             "redirects": null,
-            "_manifest": {
+            "manifest": {
                 "activities": {
                     "open": {
                         "href": "/open.html",
@@ -1066,7 +1066,7 @@ let webapps = {
                         }
                     }
                 },
-                "__name": "Music",
+                "name": "Music",
                 "default_locale": "en-US",
                 "icons": {
                     "60": "/style/icons/60/Music.png",
@@ -1089,12 +1089,12 @@ let webapps = {
                 "type": "certified",
                 "developer": {
                     "url": "https://github.com/mozilla-b2g/gaia",
-                    "__name": "The Gaia Team"
+                    "name": "The Gaia Team"
                 }
             }
         },
         {
-            "__name": "Keyboard",
+            "name": "Keyboard",
             "csp": "",
             "installOrigin": "app://keyboard.gaiamobile.org",
             "origin": "app://keyboard.gaiamobile.org",
@@ -1114,13 +1114,13 @@ let webapps = {
             "storeId": "",
             "storeVersion": 0,
             "redirects": null,
-            "_manifest": {
-                "__name": "Keyboard",
+            "manifest": {
+                "name": "Keyboard",
                 "default_locale": "en-US",
                 "description": "Gaia Keyboard",
                 "developer": {
                     "url": "https://github.com/mozilla-b2g/gaia",
-                    "__name": "The Gaia Team"
+                    "name": "The Gaia Team"
                 },
                 "type": "certified",
                 "permissions": {
@@ -1132,7 +1132,7 @@ let webapps = {
             }
         },
         {
-            "__name": "Clock",
+            "name": "Clock",
             "csp": "",
             "installOrigin": "app://clock.gaiamobile.org",
             "origin": "app://clock.gaiamobile.org",
@@ -1152,8 +1152,8 @@ let webapps = {
             "storeId": "",
             "storeVersion": 0,
             "redirects": null,
-            "_manifest": {
-                "__name": "Clock",
+            "manifest": {
+                "name": "Clock",
                 "default_locale": "en-US",
                 "icons": {
                     "60": "/style/icons/60/Clock.png",
@@ -1179,12 +1179,12 @@ let webapps = {
                 "type": "certified",
                 "developer": {
                     "url": "https://github.com/mozilla-b2g/gaia",
-                    "__name": "The Gaia Team"
+                    "name": "The Gaia Team"
                 }
             }
         },
         {
-            "__name": "System",
+            "name": "System",
             "csp": "",
             "installOrigin": "app://system.gaiamobile.org",
             "origin": "app://system.gaiamobile.org",
@@ -1204,8 +1204,8 @@ let webapps = {
             "storeId": "",
             "storeVersion": 0,
             "redirects": null,
-            "_manifest": {
-                "__name": "System",
+            "manifest": {
+                "name": "System",
                 "default_locale": "en-US",
                 "icons": {
                     "30": "/style/icons/System.png"
@@ -1281,12 +1281,12 @@ let webapps = {
                 "type": "certified",
                 "developer": {
                     "url": "https://github.com/mozilla-b2g/gaia",
-                    "__name": "The Gaia Team"
+                    "name": "The Gaia Team"
                 }
             }
         },
         {
-            "__name": "Homescreen",
+            "name": "Homescreen",
             "csp": "",
             "installOrigin": "app://homescreen.gaiamobile.org",
             "origin": "app://homescreen.gaiamobile.org",
@@ -1306,7 +1306,7 @@ let webapps = {
             "storeId": "",
             "storeVersion": 0,
             "redirects": null,
-            "_manifest": {
+            "manifest": {
                 "activities": {
                     "save-bookmark": {
                         "returnValue": true,
@@ -1321,7 +1321,7 @@ let webapps = {
                         }
                     }
                 },
-                "__name": "Homescreen",
+                "name": "Homescreen",
                 "default_locale": "en-US",
                 "icons": {
                     "30": "/style/icons/HomeScreen.png"
@@ -1352,12 +1352,12 @@ let webapps = {
                 "type": "certified",
                 "developer": {
                     "url": "https://github.com/andreasgal/gaia",
-                    "__name": "The Gaia Team"
+                    "name": "The Gaia Team"
                 }
             }
         },
         {
-            "__name": "Browser",
+            "name": "Browser",
             "csp": "",
             "installOrigin": "app://browser.gaiamobile.org",
             "origin": "app://browser.gaiamobile.org",
@@ -1377,7 +1377,7 @@ let webapps = {
             "storeId": "",
             "storeVersion": 0,
             "redirects": null,
-            "_manifest": {
+            "manifest": {
                 "activities": {
                     "view": {
                         "filters": {
@@ -1389,7 +1389,7 @@ let webapps = {
                         }
                     }
                 },
-                "__name": "Browser",
+                "name": "Browser",
                 "default_locale": "en-US",
                 "icons": {
                     "60": "/shared/resources/branding/Browser.png",
@@ -1419,12 +1419,12 @@ let webapps = {
                 "type": "certified",
                 "developer": {
                     "url": "https://github.com/mozilla-b2g/gaia",
-                    "__name": "The Gaia Team"
+                    "name": "The Gaia Team"
                 }
             }
         },
         {
-            "__name": "Usage",
+            "name": "Usage",
             "csp": "",
             "installOrigin": "app://costcontrol.gaiamobile.org",
             "origin": "app://costcontrol.gaiamobile.org",
@@ -1444,7 +1444,7 @@ let webapps = {
             "storeId": "",
             "storeVersion": 0,
             "redirects": null,
-            "_manifest": {
+            "manifest": {
                 "activities": {
                     "costcontrol/balance": {
                         "disposition": "window",
@@ -1459,7 +1459,7 @@ let webapps = {
                         "filters": {}
                     }
                 },
-                "__name": "Usage",
+                "name": "Usage",
                 "default_locale": "en-US",
                 "icons": {
                     "60": "/style/icons/60/cost-control.png",
@@ -1500,12 +1500,12 @@ let webapps = {
                 "type": "certified",
                 "developer": {
                     "url": "https://github.com/mozilla-b2g/gaia",
-                    "__name": "The Gaia Team"
+                    "name": "The Gaia Team"
                 }
             }
         },
         {
-            "__name": "Marketplace",
+            "name": "Marketplace",
             "csp": "",
             "installOrigin": "https://marketplace.firefox.com",
             "origin": "app://marketplace.firefox.com",
@@ -1532,7 +1532,7 @@ let webapps = {
             "storeId": "#unknownID#https://marketplace.firefox.com",
             "storeVersion": 0,
             "redirects": null,
-            "_manifest": {
+            "manifest": {
                 "activities": {
                     "marketplace-search": {
                         "href": "/index.html"
@@ -1550,7 +1550,7 @@ let webapps = {
                 "default_locale": "en-US",
                 "description": "Firefox Marketplace",
                 "developer": {
-                    "__name": "Mozilla",
+                    "name": "Mozilla",
                     "url": "http://mozilla.org"
                 },
                 "icons": {
@@ -1558,7 +1558,7 @@ let webapps = {
                     "128": "/128.png"
                 },
                 "launch_path": "/index.html",
-                "__name": "Marketplace",
+                "name": "Marketplace",
                 "orientation": [
                     "portrait-primary"
                 ],

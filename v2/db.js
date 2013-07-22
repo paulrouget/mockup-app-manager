@@ -4,52 +4,52 @@ let DB = {
   _copyObject: function(obj) {
     if (typeof obj == "object") {
       try {
-        return JSON.parse(JSON.stringify(value));
+        return JSON.parse(JSON.stringify(obj));
       } catch(e) {
-        throw new Error("Invalid value: " + value);
+        throw new Error("Invalid value: " + obj);
       }
     }
     if (typeof obj == "function") {
-      throw new Error("Invalid value: " + value);
+      throw new Error("Invalid value: " + obj);
     }
     return obj;
   },
 
-  _ensurePathSyntaxIsValid: function(path) {
-    if (path.split(".").length < 2) {
-      throw new Error("Invalid path syntax: " + path);
-    }
-  },
-
-  _getParentAndKey: function(path) {
+  _getParentAndKey: function(path, root) {
+    path.replace("[", ".[", "g");
     let chunks = path.split(".");
-    let parent = this._db;
+    chunks = chunks.map((c) => {
+      if (c[0] != "[") return c;
+      return parseInt(c.substr(1));
+    });
+    let parent = root;
     for (let i = 0; i < chunks.length; i++) {
       let key = chunks[i];
-      if (key in parent) {
-        if (i == (chunks.length - 1)) {
-          return {parent:parent, key:key};
-        } else {
-          parent = parent[key];
-        }
+      if (i == (chunks.length - 1)) {
+        return {parent:parent, key:key};
       } else {
-        throw new Error("Can't resolve path: " + path);
+        if (key in parent) {
+          parent = parent[key];
+        } else {
+          throw new Error("Can't resolve path: " + path);
+        }
       }
     }
   },
 
-  setValue: function(path, value) {
-    this._ensurePathSyntaxIsValid(path);
-    let {parent, key} = this._getParentAndKey(path);
+  setValue: function(path, value, root) {
+    if (!root) root = this._db;
+    let {parent, key} = this._getParentAndKey(path, root);
     parent[key] = this._copyObject(value);
     this.emit("changed", path);
   },
 
-  getValue: function(path) {
-    this._ensurePathSyntaxIsValid(path);
-    let {parent, key} = this._getParentAndKey(path);
+  getValue: function(path, root) {
+    if (!root) root = this._db;
+    let {parent, key} = this._getParentAndKey(path, root);
     return this._copyObject(parent[key]);
   }
 };
 
 EventEmitter.decorate(DB);
+DB.setValue("client.apps.all", webapps.all);

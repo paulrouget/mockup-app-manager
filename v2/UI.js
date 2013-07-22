@@ -1,6 +1,9 @@
 let _timeout = null;
 
 let UI = {
+  init: function() {
+  },
+
   setTab: function(name) {
     var tab = document.querySelector(".tab.selected");
     var panel = document.querySelector(".tabpanel.selected");
@@ -47,5 +50,6 @@ let UI = {
   },
 }
 
+UI.init();
 UI.setTab("permissions");
 

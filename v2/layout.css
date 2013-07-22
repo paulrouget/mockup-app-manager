@@ -2,6 +2,10 @@ html, body {
   height: 100%;
 }
 
+template {
+  display: none;
+}
+
 #device-inspector {
   display: flex;
   flex-direction: column;
