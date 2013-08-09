@@ -1,0 +1,95 @@
+* {
+  margin: 0;
+  padding: 0;
+  -moz-box-sizing: border-box;
+  font-size: 0.9rem;
+}
+
+body {
+  color: #333;
+  background-color: white;
+  font-family: Lucida Grande, Helvetica, Helvetica Neue, sans-serif;
+}
+
+a {
+  color: #000!important;
+  text-decoration: none;
+  border-bottom: 1px dotted #999
+}
+
+button {
+  background: #EEE;
+  border: 1px solid #999;
+  cursor: pointer;
+}
+
+.meta {
+  margin-bottom: 40px;
+}
+
+.meta > header > *{
+  line-height: 1.2em;
+}
+
+.meta > header > h2 {
+  color: #666;
+}
+
+.tab {
+  cursor: pointer;
+  border-bottom: 4px solid #CCC;
+  color: #666;
+  height: 24px;
+}
+
+.tab.selected {
+  border-color: #F06;
+  color: #000;
+}
+
+#tabs {
+  padding: 10px 0 0;
+}
+
+.permission {
+  border-top: 1px solid #CCC;
+  padding: 5px;
+  border-left: 3px solid transparent;
+}
+
+.app {
+  padding: 10px;
+  border-left: 3px solid transparent;
+}
+
+.app > img {
+  width: 24px;
+}
+
+.app > .app-name {
+  margin: 0 10px;
+}
+
+.app[running="true"] {
+  color: #000;
+}
+
+.app-button {
+  margin: 0 3px;
+  font-size: 12px;
+  border: none;
+  color: white;
+  border-radius: 2px;
+}
+
+.debug-app-button {
+  background-color: #3498DB;
+}
+
+.start-app-button {
+  background-color: #18BC9C
+}
+
+.stop-app-button {
+  background-color: #E74C3C;
+}

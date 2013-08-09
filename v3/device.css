@@ -1,0 +1,97 @@
+html, body {
+  height: 100%;
+}
+
+[hidden] {
+  display: none!important;
+}
+
+template {
+  display: none;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+body:not(.notconnected) > #notConnectedMessage,
+body.notconnected > #content {
+  display: none;
+}
+
+body.notconnected > #content {
+  display: none;
+}
+
+#content, #notConnectedMessage {
+  flex-grow: 1;
+  flex-direction: column;
+}
+
+#connection-footer {
+  border-width: 0;
+  height: 50px;
+  min-height: 50px;
+}
+
+#content {
+  display: flex;
+}
+
+#tabs-headers {
+  flex-shrink: 0;
+  display: flex;
+}
+
+#tabs {
+  overflow: auto;
+  flex-shrink: 1;
+  flex-grow: 1;
+}
+
+.tab {
+  display: block;
+  text-align: center;
+  flex-grow: 1;
+}
+
+.tabpanel {
+  height: 0;
+  overflow: hidden;
+}
+
+.tabpanel.selected {
+  height: auto;
+}
+
+#battery[status="discharging"] > .charging,
+#battery[status="charging"] > .discharging {
+  display: none;
+}
+
+.apps {
+  display: flex;
+  flex-direction: column;
+}
+
+.app {
+  display: flex;
+  align-items: center;
+  order: 1;
+}
+
+.app-name {
+  flex-grow: 1;
+}
+
+.app > .app-button {
+  display: none;
+}
+
+.app[running="false"] > .start-app-button,
+.app[running="true"] > .stop-app-button,
+.app[running="true"] > .restart-app-button,
+.app[running="true"] > .debug-app-button {
+  display: inline-block;
+}

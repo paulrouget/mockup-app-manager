@@ -1,0 +1,154 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+  <head>
+    <meta charset="utf8" />
+
+    <title>Local Apps</title>
+
+    <link rel="stylesheet" href="projects.css" type="text/css" />
+    <link rel="stylesheet" href="skin/projects.css" type="text/css" />
+  </head>
+
+  <body onload="UI.onload()">
+    <section id="content">
+
+      <div id="new-app">
+        <div id="new-app-type">
+          <button onclick="UI.addPackaged()">Add Packaged App</button>
+          or
+          <input type="url" value="" id="hosted-manifest-url" pattern="https?://.+" placeholder="http://mydomain.com/app/webapp.manifest" size="50" />
+          <button onclick="UI.addHosted()">Add Hosted App</button>
+        </div>
+      </div>
+
+      <h2>Local Apps</h2>
+      <div id="projects" template-loop="{&quot;arrayPath&quot;:&quot;projects&quot;,&quot;childSelector&quot;:&quot;#project-template&quot;}"><div xmlns="http://www.w3.org/1999/xhtml" class="project" template="{&quot;type&quot;:&quot;attribute&quot;,&quot;path&quot;:&quot;location&quot;,&quot;name&quot;:&quot;id&quot;,&quot;rootPath&quot;:&quot;projects.0.&quot;}" id="/home/paul/github/gaia/test_apps/image-uploader">
+    <div class="project-status" template="{&quot;type&quot;:&quot;attribute&quot;,&quot;path&quot;:&quot;validationStatus&quot;,&quot;name&quot;:&quot;status&quot;,&quot;rootPath&quot;:&quot;projects.0.&quot;}" status="warning"></div>
+    <img class="project-icon" template="{&quot;type&quot;:&quot;attribute&quot;,&quot;path&quot;:&quot;icon&quot;,&quot;name&quot;:&quot;src&quot;,&quot;rootPath&quot;:&quot;projects.0.&quot;}" src="icons/share.png" />
+    <div class="project-meta">
+      <strong class="name" template="{&quot;type&quot;:&quot;textContent&quot;,&quot;path&quot;:&quot;name&quot;,&quot;rootPath&quot;:&quot;projects.0.&quot;}">Image Uploader</strong>
+      <span class="type" template="{&quot;type&quot;:&quot;textContent&quot;,&quot;path&quot;:&quot;type&quot;,&quot;rootPath&quot;:&quot;projects.0.&quot;}">packaged</span>
+      <span class="location" template="{&quot;type&quot;:&quot;textContent&quot;,&quot;path&quot;:&quot;location&quot;,&quot;rootPath&quot;:&quot;projects.0.&quot;}" onclick="UI.reveal(this.textContent)">/home/paul/github/gaia/test_apps/image-uploader</span>
+      <div class="validation">
+        <div class="errors" template="{&quot;type&quot;:&quot;textContent&quot;,&quot;path&quot;:&quot;errors&quot;,&quot;rootPath&quot;:&quot;projects.0.&quot;}"></div>
+        <div class="warnings" template="{&quot;type&quot;:&quot;textContent&quot;,&quot;path&quot;:&quot;warnings&quot;,&quot;rootPath&quot;:&quot;projects.0.&quot;}">Warnings: 'certified' apps are not fully supported on the Simulator.</div>
+      </div>
+    </div>
+    <div class="project-controls">
+      <button class="project-button-refresh" onclick="UI.update(this.dataset.location)" template="{&quot;type&quot;:&quot;attribute&quot;,&quot;path&quot;:&quot;location&quot;,&quot;name&quot;:&quot;data-location&quot;,&quot;rootPath&quot;:&quot;projects.0.&quot;}" data-location="/home/paul/github/gaia/test_apps/image-uploader">update</button>
+      <button class="project-button-install" template="{&quot;type&quot;:&quot;attribute&quot;,&quot;path&quot;:&quot;location&quot;,&quot;name&quot;:&quot;data-location&quot;,&quot;rootPath&quot;:&quot;projects.0.&quot;}" data-location="/home/paul/github/gaia/test_apps/image-uploader">install</button>
+      <button class="project-button-start" template="{&quot;type&quot;:&quot;attribute&quot;,&quot;path&quot;:&quot;location&quot;,&quot;name&quot;:&quot;data-location&quot;,&quot;rootPath&quot;:&quot;projects.0.&quot;}" data-location="/home/paul/github/gaia/test_apps/image-uploader">start</button>
+      <button class="project-button-stop" template="{&quot;type&quot;:&quot;attribute&quot;,&quot;path&quot;:&quot;location&quot;,&quot;name&quot;:&quot;data-location&quot;,&quot;rootPath&quot;:&quot;projects.0.&quot;}" data-location="/home/paul/github/gaia/test_apps/image-uploader">stop</button>
+      <button class="project-button-debug" template="{&quot;type&quot;:&quot;attribute&quot;,&quot;path&quot;:&quot;location&quot;,&quot;name&quot;:&quot;data-location&quot;,&quot;rootPath&quot;:&quot;projects.0.&quot;}" data-location="/home/paul/github/gaia/test_apps/image-uploader">debug</button>
+      <button class="project-button-remove" onclick="UI.remove(this.dataset.location)" template="{&quot;type&quot;:&quot;attribute&quot;,&quot;path&quot;:&quot;location&quot;,&quot;name&quot;:&quot;data-location&quot;,&quot;rootPath&quot;:&quot;projects.0.&quot;}" title="remove" data-location="/home/paul/github/gaia/test_apps/image-uploader"></button>
+    </div>
+  </div><div xmlns="http://www.w3.org/1999/xhtml" class="project" template="{&quot;type&quot;:&quot;attribute&quot;,&quot;path&quot;:&quot;location&quot;,&quot;name&quot;:&quot;id&quot;,&quot;rootPath&quot;:&quot;projects.1.&quot;}" id="/home/paul/github/gaia/test_apps/membuster">
+    <div class="project-status" template="{&quot;type&quot;:&quot;attribute&quot;,&quot;path&quot;:&quot;validationStatus&quot;,&quot;name&quot;:&quot;status&quot;,&quot;rootPath&quot;:&quot;projects.1.&quot;}" status="valid"></div>
+    <img class="project-icon" template="{&quot;type&quot;:&quot;attribute&quot;,&quot;path&quot;:&quot;icon&quot;,&quot;name&quot;:&quot;src&quot;,&quot;rootPath&quot;:&quot;projects.1.&quot;}" src="icons/Blank.png" />
+    <div class="project-meta">
+      <strong class="name" template="{&quot;type&quot;:&quot;textContent&quot;,&quot;path&quot;:&quot;name&quot;,&quot;rootPath&quot;:&quot;projects.1.&quot;}">Membuster</strong>
+      <span class="type" template="{&quot;type&quot;:&quot;textContent&quot;,&quot;path&quot;:&quot;type&quot;,&quot;rootPath&quot;:&quot;projects.1.&quot;}">packaged</span>
+      <span class="location" template="{&quot;type&quot;:&quot;textContent&quot;,&quot;path&quot;:&quot;location&quot;,&quot;rootPath&quot;:&quot;projects.1.&quot;}" onclick="UI.reveal(this.textContent)">/home/paul/github/gaia/test_apps/membuster</span>
+      <div class="validation">
+        <div class="errors" template="{&quot;type&quot;:&quot;textContent&quot;,&quot;path&quot;:&quot;errors&quot;,&quot;rootPath&quot;:&quot;projects.1.&quot;}"></div>
+        <div class="warnings" template="{&quot;type&quot;:&quot;textContent&quot;,&quot;path&quot;:&quot;warnings&quot;,&quot;rootPath&quot;:&quot;projects.1.&quot;}"></div>
+      </div>
+    </div>
+    <div class="project-controls">
+      <button class="project-button-refresh" onclick="UI.update(this.dataset.location)" template="{&quot;type&quot;:&quot;attribute&quot;,&quot;path&quot;:&quot;location&quot;,&quot;name&quot;:&quot;data-location&quot;,&quot;rootPath&quot;:&quot;projects.1.&quot;}" data-location="/home/paul/github/gaia/test_apps/membuster">update</button>
+      <button class="project-button-install" template="{&quot;type&quot;:&quot;attribute&quot;,&quot;path&quot;:&quot;location&quot;,&quot;name&quot;:&quot;data-location&quot;,&quot;rootPath&quot;:&quot;projects.1.&quot;}" data-location="/home/paul/github/gaia/test_apps/membuster">install</button>
+      <button class="project-button-start" template="{&quot;type&quot;:&quot;attribute&quot;,&quot;path&quot;:&quot;location&quot;,&quot;name&quot;:&quot;data-location&quot;,&quot;rootPath&quot;:&quot;projects.1.&quot;}" data-location="/home/paul/github/gaia/test_apps/membuster">start</button>
+      <button class="project-button-stop" template="{&quot;type&quot;:&quot;attribute&quot;,&quot;path&quot;:&quot;location&quot;,&quot;name&quot;:&quot;data-location&quot;,&quot;rootPath&quot;:&quot;projects.1.&quot;}" data-location="/home/paul/github/gaia/test_apps/membuster">stop</button>
+      <button class="project-button-debug" template="{&quot;type&quot;:&quot;attribute&quot;,&quot;path&quot;:&quot;location&quot;,&quot;name&quot;:&quot;data-location&quot;,&quot;rootPath&quot;:&quot;projects.1.&quot;}" data-location="/home/paul/github/gaia/test_apps/membuster">debug</button>
+      <button class="project-button-remove" onclick="UI.remove(this.dataset.location)" template="{&quot;type&quot;:&quot;attribute&quot;,&quot;path&quot;:&quot;location&quot;,&quot;name&quot;:&quot;data-location&quot;,&quot;rootPath&quot;:&quot;projects.1.&quot;}" title="remove" data-location="/home/paul/github/gaia/test_apps/membuster"></button>
+    </div>
+  </div><div xmlns="http://www.w3.org/1999/xhtml" class="project" template="{&quot;type&quot;:&quot;attribute&quot;,&quot;path&quot;:&quot;location&quot;,&quot;name&quot;:&quot;id&quot;,&quot;rootPath&quot;:&quot;projects.2.&quot;}" id="/home/paul/github/gaia/test_apps/uitest">
+    <div class="project-status" template="{&quot;type&quot;:&quot;attribute&quot;,&quot;path&quot;:&quot;validationStatus&quot;,&quot;name&quot;:&quot;status&quot;,&quot;rootPath&quot;:&quot;projects.2.&quot;}" status="warning"></div>
+    <img class="project-icon" template="{&quot;type&quot;:&quot;attribute&quot;,&quot;path&quot;:&quot;icon&quot;,&quot;name&quot;:&quot;src&quot;,&quot;rootPath&quot;:&quot;projects.2.&quot;}" src="icons/Uitest.png" />
+    <div class="project-meta">
+      <strong class="name" template="{&quot;type&quot;:&quot;textContent&quot;,&quot;path&quot;:&quot;name&quot;,&quot;rootPath&quot;:&quot;projects.2.&quot;}">UI tests</strong>
+      <span class="type" template="{&quot;type&quot;:&quot;textContent&quot;,&quot;path&quot;:&quot;type&quot;,&quot;rootPath&quot;:&quot;projects.2.&quot;}">packaged</span>
+      <span class="location" template="{&quot;type&quot;:&quot;textContent&quot;,&quot;path&quot;:&quot;location&quot;,&quot;rootPath&quot;:&quot;projects.2.&quot;}" onclick="UI.reveal(this.textContent)">/home/paul/github/gaia/test_apps/uitest</span>
+      <div class="validation">
+        <div class="errors" template="{&quot;type&quot;:&quot;textContent&quot;,&quot;path&quot;:&quot;errors&quot;,&quot;rootPath&quot;:&quot;projects.2.&quot;}"></div>
+        <div class="warnings" template="{&quot;type&quot;:&quot;textContent&quot;,&quot;path&quot;:&quot;warnings&quot;,&quot;rootPath&quot;:&quot;projects.2.&quot;}">Warnings: app submission to the Marketplace needs at least an 128 icon,
+ 'certified' apps are not fully supported on the Simulator.</div>
+      </div>
+    </div>
+    <div class="project-controls">
+      <button class="project-button-refresh" onclick="UI.update(this.dataset.location)" template="{&quot;type&quot;:&quot;attribute&quot;,&quot;path&quot;:&quot;location&quot;,&quot;name&quot;:&quot;data-location&quot;,&quot;rootPath&quot;:&quot;projects.2.&quot;}" data-location="/home/paul/github/gaia/test_apps/uitest">update</button>
+      <button class="project-button-install" template="{&quot;type&quot;:&quot;attribute&quot;,&quot;path&quot;:&quot;location&quot;,&quot;name&quot;:&quot;data-location&quot;,&quot;rootPath&quot;:&quot;projects.2.&quot;}" data-location="/home/paul/github/gaia/test_apps/uitest">install</button>
+      <button class="project-button-start" template="{&quot;type&quot;:&quot;attribute&quot;,&quot;path&quot;:&quot;location&quot;,&quot;name&quot;:&quot;data-location&quot;,&quot;rootPath&quot;:&quot;projects.2.&quot;}" data-location="/home/paul/github/gaia/test_apps/uitest">start</button>
+      <button class="project-button-stop" template="{&quot;type&quot;:&quot;attribute&quot;,&quot;path&quot;:&quot;location&quot;,&quot;name&quot;:&quot;data-location&quot;,&quot;rootPath&quot;:&quot;projects.2.&quot;}" data-location="/home/paul/github/gaia/test_apps/uitest">stop</button>
+      <button class="project-button-debug" template="{&quot;type&quot;:&quot;attribute&quot;,&quot;path&quot;:&quot;location&quot;,&quot;name&quot;:&quot;data-location&quot;,&quot;rootPath&quot;:&quot;projects.2.&quot;}" data-location="/home/paul/github/gaia/test_apps/uitest">debug</button>
+      <button class="project-button-remove" onclick="UI.remove(this.dataset.location)" template="{&quot;type&quot;:&quot;attribute&quot;,&quot;path&quot;:&quot;location&quot;,&quot;name&quot;:&quot;data-location&quot;,&quot;rootPath&quot;:&quot;projects.2.&quot;}" title="remove" data-location="/home/paul/github/gaia/test_apps/uitest"></button>
+    </div>
+  </div><div xmlns="http://www.w3.org/1999/xhtml" class="project" template="{&quot;type&quot;:&quot;attribute&quot;,&quot;path&quot;:&quot;location&quot;,&quot;name&quot;:&quot;id&quot;,&quot;rootPath&quot;:&quot;projects.3.&quot;}" id="http://paulrouget.com/hn-fxos/manifest.webapp">
+    <div class="project-status" template="{&quot;type&quot;:&quot;attribute&quot;,&quot;path&quot;:&quot;validationStatus&quot;,&quot;name&quot;:&quot;status&quot;,&quot;rootPath&quot;:&quot;projects.3.&quot;}" status="valid"></div>
+    <img class="project-icon" template="{&quot;type&quot;:&quot;attribute&quot;,&quot;path&quot;:&quot;icon&quot;,&quot;name&quot;:&quot;src&quot;,&quot;rootPath&quot;:&quot;projects.3.&quot;}" src="http://paulrouget.com/hn-fxos/images/logo128.png" />
+    <div class="project-meta">
+      <strong class="name" template="{&quot;type&quot;:&quot;textContent&quot;,&quot;path&quot;:&quot;name&quot;,&quot;rootPath&quot;:&quot;projects.3.&quot;}">hckrnws</strong>
+      <span class="type" template="{&quot;type&quot;:&quot;textContent&quot;,&quot;path&quot;:&quot;type&quot;,&quot;rootPath&quot;:&quot;projects.3.&quot;}">hosted</span>
+      <span class="location" template="{&quot;type&quot;:&quot;textContent&quot;,&quot;path&quot;:&quot;location&quot;,&quot;rootPath&quot;:&quot;projects.3.&quot;}" onclick="UI.reveal(this.textContent)">http://paulrouget.com/hn-fxos/manifest.webapp</span>
+      <div class="validation">
+        <div class="errors" template="{&quot;type&quot;:&quot;textContent&quot;,&quot;path&quot;:&quot;errors&quot;,&quot;rootPath&quot;:&quot;projects.3.&quot;}"></div>
+        <div class="warnings" template="{&quot;type&quot;:&quot;textContent&quot;,&quot;path&quot;:&quot;warnings&quot;,&quot;rootPath&quot;:&quot;projects.3.&quot;}"></div>
+      </div>
+    </div>
+    <div class="project-controls">
+      <button class="project-button-refresh" onclick="UI.update(this.dataset.location)" template="{&quot;type&quot;:&quot;attribute&quot;,&quot;path&quot;:&quot;location&quot;,&quot;name&quot;:&quot;data-location&quot;,&quot;rootPath&quot;:&quot;projects.3.&quot;}" data-location="http://paulrouget.com/hn-fxos/manifest.webapp">update</button>
+      <button class="project-button-install" template="{&quot;type&quot;:&quot;attribute&quot;,&quot;path&quot;:&quot;location&quot;,&quot;name&quot;:&quot;data-location&quot;,&quot;rootPath&quot;:&quot;projects.3.&quot;}" data-location="http://paulrouget.com/hn-fxos/manifest.webapp">install</button>
+      <button class="project-button-start" template="{&quot;type&quot;:&quot;attribute&quot;,&quot;path&quot;:&quot;location&quot;,&quot;name&quot;:&quot;data-location&quot;,&quot;rootPath&quot;:&quot;projects.3.&quot;}" data-location="http://paulrouget.com/hn-fxos/manifest.webapp">start</button>
+      <button class="project-button-stop" template="{&quot;type&quot;:&quot;attribute&quot;,&quot;path&quot;:&quot;location&quot;,&quot;name&quot;:&quot;data-location&quot;,&quot;rootPath&quot;:&quot;projects.3.&quot;}" data-location="http://paulrouget.com/hn-fxos/manifest.webapp">stop</button>
+      <button class="project-button-debug" template="{&quot;type&quot;:&quot;attribute&quot;,&quot;path&quot;:&quot;location&quot;,&quot;name&quot;:&quot;data-location&quot;,&quot;rootPath&quot;:&quot;projects.3.&quot;}" data-location="http://paulrouget.com/hn-fxos/manifest.webapp">debug</button>
+      <button class="project-button-remove" onclick="UI.remove(this.dataset.location)" template="{&quot;type&quot;:&quot;attribute&quot;,&quot;path&quot;:&quot;location&quot;,&quot;name&quot;:&quot;data-location&quot;,&quot;rootPath&quot;:&quot;projects.3.&quot;}" title="remove" data-location="http://paulrouget.com/hn-fxos/manifest.webapp"></button>
+    </div>
+  </div><div xmlns="http://www.w3.org/1999/xhtml" class="project" template="{&quot;type&quot;:&quot;attribute&quot;,&quot;path&quot;:&quot;location&quot;,&quot;name&quot;:&quot;id&quot;,&quot;rootPath&quot;:&quot;projects.4.&quot;}" id="/home/paul/github/gaia/test_apps/geoloc">
+    <div class="project-status" template="{&quot;type&quot;:&quot;attribute&quot;,&quot;path&quot;:&quot;validationStatus&quot;,&quot;name&quot;:&quot;status&quot;,&quot;rootPath&quot;:&quot;projects.4.&quot;}" status="warning"></div>
+    <img class="project-icon" template="{&quot;type&quot;:&quot;attribute&quot;,&quot;path&quot;:&quot;icon&quot;,&quot;name&quot;:&quot;src&quot;,&quot;rootPath&quot;:&quot;projects.4.&quot;}" src="icons/geoloc-128.png" />
+    <div class="project-meta">
+      <strong class="name" template="{&quot;type&quot;:&quot;textContent&quot;,&quot;path&quot;:&quot;name&quot;,&quot;rootPath&quot;:&quot;projects.4.&quot;}">Geoloc</strong>
+      <span class="type" template="{&quot;type&quot;:&quot;textContent&quot;,&quot;path&quot;:&quot;type&quot;,&quot;rootPath&quot;:&quot;projects.4.&quot;}">packaged</span>
+      <span class="location" template="{&quot;type&quot;:&quot;textContent&quot;,&quot;path&quot;:&quot;location&quot;,&quot;rootPath&quot;:&quot;projects.4.&quot;}" onclick="UI.reveal(this.textContent)">/home/paul/github/gaia/test_apps/geoloc</span>
+      <div class="validation">
+        <div class="errors" template="{&quot;type&quot;:&quot;textContent&quot;,&quot;path&quot;:&quot;errors&quot;,&quot;rootPath&quot;:&quot;projects.4.&quot;}"></div>
+        <div class="warnings" template="{&quot;type&quot;:&quot;textContent&quot;,&quot;path&quot;:&quot;warnings&quot;,&quot;rootPath&quot;:&quot;projects.4.&quot;}">Warnings: 'certified' apps are not fully supported on the Simulator.</div>
+      </div>
+    </div>
+    <div class="project-controls">
+      <button class="project-button-refresh" onclick="UI.update(this.dataset.location)" template="{&quot;type&quot;:&quot;attribute&quot;,&quot;path&quot;:&quot;location&quot;,&quot;name&quot;:&quot;data-location&quot;,&quot;rootPath&quot;:&quot;projects.4.&quot;}" data-location="/home/paul/github/gaia/test_apps/geoloc">update</button>
+      <button class="project-button-install" template="{&quot;type&quot;:&quot;attribute&quot;,&quot;path&quot;:&quot;location&quot;,&quot;name&quot;:&quot;data-location&quot;,&quot;rootPath&quot;:&quot;projects.4.&quot;}" data-location="/home/paul/github/gaia/test_apps/geoloc">install</button>
+      <button class="project-button-start" template="{&quot;type&quot;:&quot;attribute&quot;,&quot;path&quot;:&quot;location&quot;,&quot;name&quot;:&quot;data-location&quot;,&quot;rootPath&quot;:&quot;projects.4.&quot;}" data-location="/home/paul/github/gaia/test_apps/geoloc">start</button>
+      <button class="project-button-stop" template="{&quot;type&quot;:&quot;attribute&quot;,&quot;path&quot;:&quot;location&quot;,&quot;name&quot;:&quot;data-location&quot;,&quot;rootPath&quot;:&quot;projects.4.&quot;}" data-location="/home/paul/github/gaia/test_apps/geoloc">stop</button>
+      <button class="project-button-debug" template="{&quot;type&quot;:&quot;attribute&quot;,&quot;path&quot;:&quot;location&quot;,&quot;name&quot;:&quot;data-location&quot;,&quot;rootPath&quot;:&quot;projects.4.&quot;}" data-location="/home/paul/github/gaia/test_apps/geoloc">debug</button>
+      <button class="project-button-remove" onclick="UI.remove(this.dataset.location)" template="{&quot;type&quot;:&quot;attribute&quot;,&quot;path&quot;:&quot;location&quot;,&quot;name&quot;:&quot;data-location&quot;,&quot;rootPath&quot;:&quot;projects.4.&quot;}" title="remove" data-location="/home/paul/github/gaia/test_apps/geoloc"></button>
+    </div>
+  </div><div xmlns="http://www.w3.org/1999/xhtml" class="project" template="{&quot;type&quot;:&quot;attribute&quot;,&quot;path&quot;:&quot;location&quot;,&quot;name&quot;:&quot;id&quot;,&quot;rootPath&quot;:&quot;projects.5.&quot;}" id="http://paulrouget.com/hn-fxos">
+    <div class="project-status" template="{&quot;type&quot;:&quot;attribute&quot;,&quot;path&quot;:&quot;validationStatus&quot;,&quot;name&quot;:&quot;status&quot;,&quot;rootPath&quot;:&quot;projects.5.&quot;}" status="error"></div>
+    <img class="project-icon" template="{&quot;type&quot;:&quot;attribute&quot;,&quot;path&quot;:&quot;icon&quot;,&quot;name&quot;:&quot;src&quot;,&quot;rootPath&quot;:&quot;projects.5.&quot;}" src="n/a" />
+    <div class="project-meta">
+      <strong class="name" template="{&quot;type&quot;:&quot;textContent&quot;,&quot;path&quot;:&quot;name&quot;,&quot;rootPath&quot;:&quot;projects.5.&quot;}">n/a</strong>
+      <span class="type" template="{&quot;type&quot;:&quot;textContent&quot;,&quot;path&quot;:&quot;type&quot;,&quot;rootPath&quot;:&quot;projects.5.&quot;}">hosted</span>
+      <span class="location" template="{&quot;type&quot;:&quot;textContent&quot;,&quot;path&quot;:&quot;location&quot;,&quot;rootPath&quot;:&quot;projects.5.&quot;}" onclick="UI.reveal(this.textContent)">http://paulrouget.com/hn-fxos</span>
+      <div class="validation">
+        <div class="errors" template="{&quot;type&quot;:&quot;textContent&quot;,&quot;path&quot;:&quot;errors&quot;,&quot;rootPath&quot;:&quot;projects.5.&quot;}">Errors: The webapp manifest isn't a valid JSON file: SyntaxError: JSON.parse: unexpected characterat: http://paulrouget.com/hn-fxos</div>
+        <div class="warnings" template="{&quot;type&quot;:&quot;textContent&quot;,&quot;path&quot;:&quot;warnings&quot;,&quot;rootPath&quot;:&quot;projects.5.&quot;}"></div>
+      </div>
+    </div>
+    <div class="project-controls">
+      <button class="project-button-refresh" onclick="UI.update(this.dataset.location)" template="{&quot;type&quot;:&quot;attribute&quot;,&quot;path&quot;:&quot;location&quot;,&quot;name&quot;:&quot;data-location&quot;,&quot;rootPath&quot;:&quot;projects.5.&quot;}" data-location="http://paulrouget.com/hn-fxos">update</button>
+      <button class="project-button-install" template="{&quot;type&quot;:&quot;attribute&quot;,&quot;path&quot;:&quot;location&quot;,&quot;name&quot;:&quot;data-location&quot;,&quot;rootPath&quot;:&quot;projects.5.&quot;}" data-location="http://paulrouget.com/hn-fxos">install</button>
+      <button class="project-button-start" template="{&quot;type&quot;:&quot;attribute&quot;,&quot;path&quot;:&quot;location&quot;,&quot;name&quot;:&quot;data-location&quot;,&quot;rootPath&quot;:&quot;projects.5.&quot;}" data-location="http://paulrouget.com/hn-fxos">start</button>
+      <button class="project-button-stop" template="{&quot;type&quot;:&quot;attribute&quot;,&quot;path&quot;:&quot;location&quot;,&quot;name&quot;:&quot;data-location&quot;,&quot;rootPath&quot;:&quot;projects.5.&quot;}" data-location="http://paulrouget.com/hn-fxos">stop</button>
+      <button class="project-button-debug" template="{&quot;type&quot;:&quot;attribute&quot;,&quot;path&quot;:&quot;location&quot;,&quot;name&quot;:&quot;data-location&quot;,&quot;rootPath&quot;:&quot;projects.5.&quot;}" data-location="http://paulrouget.com/hn-fxos">debug</button>
+      <button class="project-button-remove" onclick="UI.remove(this.dataset.location)" template="{&quot;type&quot;:&quot;attribute&quot;,&quot;path&quot;:&quot;location&quot;,&quot;name&quot;:&quot;data-location&quot;,&quot;rootPath&quot;:&quot;projects.5.&quot;}" title="remove" data-location="http://paulrouget.com/hn-fxos"></button>
+    </div>
+  </div></div>
+
+
+    </section>
+
+    <iframe id="connection-footer" src="connection-footer.xhtml"></iframe>
+  </body>
+
+</html>

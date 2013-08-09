@@ -1,0 +1,117 @@
+* {
+  margin: 0;
+  padding: 0;
+  -moz-box-sizing: border-box;
+  font-size: 0.9rem;
+}
+
+body {
+  color: #333;
+  background-color: white;
+  font-family: Lucida Grande, Helvetica, Helvetica Neue, sans-serif;
+}
+
+a {
+  color: #000!important;
+  text-decoration: none;
+  border-bottom: 1px dotted #999
+}
+
+button {
+  background: #EEE;
+  border: 1px solid #999;
+  cursor: pointer;
+  min-width: 50px;
+}
+
+.project {
+  padding: 10px 0;
+  background: #F6F6F6;
+  margin: 5px;
+  color: #666;
+}
+
+strong {
+  color: #111;
+}
+
+.project {
+  position: relative;
+  padding-right: 14px;
+}
+
+.project-icon {
+  width: 32px;
+  height: 32px;
+  margin: 0 10px;
+}
+
+.project-controls > button {
+  margin: 0 3px;
+  font-size: 12px;
+  border: none;
+  color: white;
+  border-radius: 2px;
+}
+
+.location {
+  color: gray;
+  cursor: pointer;
+}
+
+.project-controls {
+  display: flex;
+  align-items: flex-start;
+  padding-top: 10px;
+}
+
+.project-button-debug {
+  background-color: #3498DB;
+}
+
+.project-button-install,
+.project-button-start {
+  background-color: #18BC9C
+}
+
+.project-button-stop {
+  background-color: #E74C3C;
+}
+
+.project-button-refresh {
+  background-color: #777;
+}
+
+.project-status {
+  width: 3px;
+  margin: -10px 0;
+}
+
+.project-status[status="warning"] {
+  background: #FFAA48;
+}
+
+.project-status[status="error"] {
+  background-color: #E74C3C;
+}
+
+.project-status[status="valid"] {
+  background-color: #18BC9C
+}
+
+.project-button-remove {
+  width: 11px;
+  height: 11px;
+  min-width: 0;
+  display: block;
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  margin: 0!important;
+  background-image: linear-gradient(to top, #666, #666), linear-gradient(to left, #666, #666);
+  background-size: 100% 1px, 1px 100%;
+  background-repeat: no-repeat;
+  background-position: 0 center, center 0;
+  transform: rotate(45deg);
+  background-color: transparent;
+}

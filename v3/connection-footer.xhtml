@@ -1,0 +1,79 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf8" />
+    <link rel="stylesheet" href="connection-footer.css" type="text/css" />
+    <link rel="stylesheet" href="skin/connection-footer.css" type="text/css" />
+  </head>
+
+  <body onload="UI.init()">
+
+    <div id="connection-footer" template="{&quot;type&quot;:&quot;attribute&quot;,&quot;path&quot;:&quot;connection.status&quot;,&quot;name&quot;:&quot;status&quot;}" status="disconnected">
+      <div id="banners-and-logs">
+
+        <!-- Connected -->
+        <div id="banner-connected" class="banner">
+          <div id="status" class="banner-box">
+            <div class="banner-content">
+              <span template="{&quot;type&quot;:&quot;localizedContent&quot;,&quot;property&quot;:&quot;connection.connectedToDevice&quot;,&quot;paths&quot;:[&quot;device.description.name&quot;]}">Connected to B2G</span>
+              <a href="#" onclick="UI.disconnect()">disconnect</a>
+            </div>
+          </div>
+          <div id="expand" class="banner-box">
+            <div class="banner-content">
+              <a target="_" href="device.xhtml">Click for more details</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Disconnected -->
+        <div id="banner-disconnected" class="banner">
+          <div class="banner-box">
+            <div class="banner-content">
+              <span>Not connected</span>
+              <button onclick="UI.connect()" template="{&quot;type&quot;:&quot;localizedContent&quot;,&quot;property&quot;:&quot;connection.connectTo&quot;,&quot;paths&quot;:[&quot;connection.host&quot;,&quot;connection.port&quot;]}">Connect to localhost:6000</button>
+              <a href="#" onclick="UI.editConnectionParameters()">change</a>
+              <button id="start-simulator-button" onclick="UI.startSimulator()" template="{&quot;type&quot;:&quot;attribute&quot;,&quot;path&quot;:&quot;simulators.versions.length&quot;,&quot;name&quot;:&quot;simulators-count&quot;}" simulators-count="0">start simulator</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Connecting -->
+        <div id="banner-connecting" class="banner">
+          <div id="status" class="banner-box">
+            <div class="banner-content">
+              <span>connecting…</span>
+              <button onclick="UI.disconnect()">cancel</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Disconnecting -->
+        <div id="banner-disconnecting" class="banner">
+          <div id="status" class="banner-box">
+            <div class="banner-content">
+              <span>disconnecting…</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Editing -->
+        <div id="banner-editing" class="banner">
+          <div class="banner-box">
+            <div class="banner-content">
+              <input class="host" template="{&quot;type&quot;:&quot;attribute&quot;,&quot;path&quot;:&quot;connection.host&quot;,&quot;name&quot;:&quot;value&quot;}" value="localhost" />
+              <input type="number" class="port" template="{&quot;type&quot;:&quot;attribute&quot;,&quot;path&quot;:&quot;connection.port&quot;,&quot;name&quot;:&quot;value&quot;}" value="6000" />
+              <button onclick="UI.saveConnectionInfo()">save</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Logs -->
+        <div id="logs">
+          <pre></pre>
+        </div>
+
+      </div>
+    </div>
+  </body>
+  <script type="application/javascript;version=1.8" src="connection-footer.js"></script>
+</html>

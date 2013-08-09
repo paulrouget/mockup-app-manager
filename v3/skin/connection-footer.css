@@ -1,0 +1,42 @@
+* {
+  margin: 0;
+  padding: 0;
+  -moz-box-sizing: border-box;
+  font-size: 0.9rem;
+}
+
+body {
+  color: #333;
+  background-color: white;
+  font-family: Lucida Grande, Helvetica, Helvetica Neue, sans-serif;
+}
+
+a {
+  color: #000!important;
+  text-decoration: none;
+  border-bottom: 1px dotted #999
+}
+
+button {
+  background: #EEE;
+  border: 1px solid #999;
+  cursor: pointer;
+}
+
+#banners-and-logs {
+  border: solid #CCC;
+  border-width: 1px 0;
+}
+
+#logs > pre {
+  margin-left: 5px;
+  font-size: 10px;
+}
+
+.banner-box {
+  background-image: linear-gradient(to bottom, transparent, #AAA, transparent);
+  background-position: center right;
+  background-size: 1px 80%;
+  background-repeat: no-repeat;
+  padding: 10px 20px;
+}

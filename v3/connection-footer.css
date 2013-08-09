@@ -1,0 +1,55 @@
+#connection-footer {
+  display: flex;
+  flex-direction: column;
+  height: 50px;
+}
+
+#banners-and-logs {
+  display: flex;
+}
+
+#logs {
+  display: flex;
+  width: 30%;
+}
+
+.banner {
+  display: none;
+  width: 70%;
+}
+
+#connection-footer[status="connected"]     #banner-connected,
+#connection-footer[status="connecting"]    #banner-connecting,
+#connection-footer[status="disconnected"]  #banner-disconnected,
+#connection-footer[status="disconnecting"] #banner-disconnecting {
+  display: flex;
+}
+
+body.edit-connection .banner {
+  display: none !important;
+}
+
+body.edit-connection #banner-editing {
+  display: flex !important;
+}
+
+#logs > pre {
+  overflow: auto;
+  width: 100%;
+}
+
+.banner-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+}
+
+#banner-connected > .banner-box {
+  width: 50%;
+  align-items: center;
+}
+
+#start-simulator-button[simulators-count="0"] {
+  display: none;
+}
